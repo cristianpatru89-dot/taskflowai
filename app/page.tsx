@@ -146,12 +146,12 @@ export default function Home() {
 }
 
 const toolkits = [
-  { name: "Product manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 8, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600" },
-  { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 7, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700" },
-  { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 8, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600" },
-  { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 6, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600" },
-  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 6, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600" },
-  { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 6, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600" },
+  { name: "Product manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 8, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600", link: "/toolkit/pm" },
+  { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 7, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700", link: "#" },
+  { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 8, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600", link: "#" },
+  { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 6, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600", link: "#" },
+  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 6, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "#" },
+  { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 6, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600", link: "#" },
 ]
 
 const steps = [
