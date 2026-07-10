@@ -44,19 +44,21 @@ export default function Home() {
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Toolkits</p>
           <h2 className="text-2xl font-medium text-gray-900 mb-3">Built for your profession</h2>
           <p className="text-sm text-gray-500">Each toolkit contains 6–10 outcome-focused tools with context and prompts built in.</p>
-     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-  {toolkits.map((t) => (
-    <a href={t.link} key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors cursor-pointer block">
-      <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
-        {t.icon}
-      </div>
-      <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
-      <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
-      <div className="text-xs text-gray-400">{t.tools} tools</div>
-      <div className={`text-xs font-medium mt-2 ${t.priceColor}`}>{t.price}</div>
-    </a>
-  ))}
-</div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {toolkits.map((t) => (
+            <a href={t.link} key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors cursor-pointer block">
+              <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
+                {t.icon}
+              </div>
+              <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
+              <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
+              <div className="text-xs text-gray-400">{t.tools} tools</div>
+              <div className={`text-xs font-medium mt-2 ${t.priceColor}`}>{t.price}</div>
+            </a>
+          ))}
+        </div>
+      </section>
 
       <hr className="border-gray-100 mx-6" />
 
