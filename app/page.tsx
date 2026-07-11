@@ -152,7 +152,7 @@ const toolkits = [
   { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 10, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700", link: "/toolkit/legal" },
   { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 10, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600", link: "/toolkit/recruiting" },
   { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 10, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600", link: "/toolkit/finance" },
-  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 6, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "#" },
+  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 6, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "/toolkit/healthcare" },
   { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 10, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600", link: "/toolkit/executive" },
 ]
 
