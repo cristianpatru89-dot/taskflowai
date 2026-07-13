@@ -148,13 +148,18 @@ export default function Home() {
 }
 
 const toolkits = [
-  { name: "Product manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 10, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600", link: "/toolkit/pm" },
+  { name: "Product Manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 10, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600", link: "/toolkit/pm" },
   { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 10, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700", link: "/toolkit/legal" },
   { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 10, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600", link: "/toolkit/recruiting" },
   { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 10, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600", link: "/toolkit/finance" },
   { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 10, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "/toolkit/healthcare" },
   { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 10, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600", link: "/toolkit/executive" },
-  { name: "Sales", desc: "Cold emails, proposals, objection handling, negotiation.", tools: 10, price: "$79", icon: "🎯", iconBg: "bg-orange-50", priceColor: "text-orange-600", link: "/toolkit/sales" },
+  { name: "Sales", desc: "Cold emails, proposals, objection handling, negotiation.", tools: 10, price: "$79", icon: "💼", iconBg: "bg-orange-50", priceColor: "text-orange-600", link: "/toolkit/sales" },
+  { name: "Marketing", desc: "Campaign briefs, content strategy, email sequences, ads.", tools: 10, price: "$79", icon: "📣", iconBg: "bg-pink-50", priceColor: "text-pink-600", link: "/toolkit/marketing" },
+  { name: "Education", desc: "Lesson plans, assessments, parent comms, report comments.", tools: 10, price: "$59", icon: "📚", iconBg: "bg-yellow-50", priceColor: "text-yellow-600", link: "/toolkit/education" },
+  { name: "Consulting", desc: "Proposals, SOWs, client updates, findings reports.", tools: 10, price: "$99", icon: "🔍", iconBg: "bg-slate-50", priceColor: "text-slate-600", link: "/toolkit/consulting" },
+  { name: "Startup", desc: "Pitch decks, investor updates, GTM strategy, OKRs.", tools: 10, price: "$99", icon: "🚀", iconBg: "bg-violet-50", priceColor: "text-violet-600", link: "/toolkit/startup" },
+  { name: "Real Estate", desc: "Listings, valuations, market analysis, investment analysis.", tools: 10, price: "$79", icon: "🏠", iconBg: "bg-emerald-50", priceColor: "text-emerald-600", link: "/toolkit/realestate" },
 ]
 
 const steps = [
