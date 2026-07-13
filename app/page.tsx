@@ -1,3 +1,7 @@
+'use client'
+
+import React from 'react'
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
@@ -136,6 +140,30 @@ export default function Home() {
         </div>
       </section>
 
+{/* Email Capture Section */}
+<section className="bg-gray-900 py-16 px-6">
+  <div className="max-w-2xl mx-auto text-center">
+    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Free access</p>
+    <h2 className="text-2xl font-medium text-white mb-3">
+      Get 3 free workflows — no credit card
+    </h2>
+    <p className="text-sm text-gray-400 mb-8">
+      Enter your email and we will send you 3 hand-picked workflows from the PM, Legal, and Sales toolkits. Free forever.
+    </p>
+    <EmailForm />
+  </div>
+</section>
+
+{/* Feedback Section */}
+<section className="py-12 px-6 border-t border-gray-100">
+  <div className="max-w-xl mx-auto text-center">
+    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Feedback</p>
+    <h2 className="text-xl font-medium text-gray-900 mb-2">How are we doing?</h2>
+    <p className="text-sm text-gray-500 mb-6">Tell us what you think — it takes 30 seconds.</p>
+    <FeedbackForm />
+  </div>
+</section>
+
       <footer className="border-t border-gray-100 py-8 text-center">
         <div className="text-sm font-medium text-gray-900 mb-1">
           TaskFlow<span className="text-blue-600">AI</span>
@@ -167,3 +195,120 @@ const steps = [
   { num: "Step 02", title: "Fill in your context", desc: "Each tool has simple inputs — no prompt engineering required." },
   { num: "Step 03", title: "Get your output", desc: "Copy the result directly into your doc, email, or workflow. Done." },
 ]
+
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypaY6OIg8J1MyXVYdFpZuQmC9QHh0iB9iqnUqPC0IFOV2bWe8gILaJyZ-aiBnb00V6/exec'
+
+function EmailForm() {
+  const [email, setEmail] = React.useState('')
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+    setStatus('loading')
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'email', email, source: 'homepage' })
+      })
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="bg-gray-800 rounded-xl px-6 py-4 text-center">
+        <p className="text-green-400 font-medium mb-1">✓ You are in!</p>
+        <p className="text-gray-400 text-sm">Check your inbox — your free workflows are on the way.</p>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto">
+      <input
+        type="email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="flex-1 px-4 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-gray-500"
+      />
+      <button
+        type="submit"
+        disabled={status === 'loading'}
+        className="px-5 py-2.5 bg-white text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
+      >
+        {status === 'loading' ? '...' : 'Get free workflows'}
+      </button>
+    </form>
+  )
+}
+
+function FeedbackForm() {
+  const [rating, setRating] = React.useState(0)
+  const [comment, setComment] = React.useState('')
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!rating) return
+    setStatus('loading')
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'feedback', rating, comment, page: 'homepage' })
+      })
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="bg-gray-50 rounded-xl px-6 py-4 text-center">
+        <p className="text-green-600 font-medium mb-1">✓ Thank you!</p>
+        <p className="text-gray-500 text-sm">Your feedback helps us build better toolkits.</p>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="flex justify-center gap-2">
+        {[1, 2, 3, 4, 5].map(star => (
+          <button
+            key={star}
+            type="button"
+            onClick={() => setRating(star)}
+            className={`text-2xl transition-transform hover:scale-110 ${star <= rating ? 'opacity-100' : 'opacity-30'}`}
+          >
+            ⭐
+          </button>
+        ))}
+      </div>
+      <textarea
+        value={comment}
+        onChange={e => setComment(e.target.value)}
+        placeholder="What would make TaskFlowAI better for you? (optional)"
+        rows={2}
+        className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 placeholder-gray-300 focus:outline-none focus:border-gray-400 resize-none"
+      />
+      <button
+        type="submit"
+        disabled={!rating || status === 'loading'}
+        className="px-6 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 disabled:opacity-30 transition-colors"
+      >
+        {status === 'loading' ? 'Sending...' : 'Send feedback'}
+      </button>
+    </form>
+  )
+}
