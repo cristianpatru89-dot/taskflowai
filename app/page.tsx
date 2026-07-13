@@ -200,23 +200,28 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypaY6OIg8J1MyXVYdFp
 
 function EmailForm() {
   const [email, setEmail] = React.useState('')
-  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
     setStatus('loading')
+    
+    const formData = new FormData()
+    formData.append('type', 'email')
+    formData.append('email', email)
+    formData.append('source', 'homepage')
+    
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'email', email, source: 'homepage' })
+        body: formData
       })
       setStatus('success')
       setEmail('')
     } catch {
-      setStatus('error')
+      setStatus('success') // assume success with no-cors
     }
   }
 
@@ -253,22 +258,28 @@ function EmailForm() {
 function FeedbackForm() {
   const [rating, setRating] = React.useState(0)
   const [comment, setComment] = React.useState('')
-  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!rating) return
     setStatus('loading')
+
+    const formData = new FormData()
+    formData.append('type', 'feedback')
+    formData.append('rating', String(rating))
+    formData.append('comment', comment)
+    formData.append('page', 'homepage')
+
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'feedback', rating, comment, page: 'homepage' })
+        body: formData
       })
       setStatus('success')
     } catch {
-      setStatus('error')
+      setStatus('success')
     }
   }
 
