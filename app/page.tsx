@@ -207,7 +207,7 @@ function EmailForm() {
     if (!email) return
     setStatus('loading')
     
-    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf1ImKJpyXl8p7p5xqsYDWisq41SgIaaiEDxX5Ilwjcd4U/formResponse'
+    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScQpLielwdW6HCQamDkUArStTusygQV4NFbugxY2fldHYvu1w/formResponse'
     
     const formData = new FormData()
     formData.append('entry.644710253', email)
