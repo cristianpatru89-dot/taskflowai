@@ -207,13 +207,13 @@ function EmailForm() {
     if (!email) return
     setStatus('loading')
     
+    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf1ImKJpyXl8p7p5xqsYDWisq41SgIaaiEDxX5Ilwjcd4U/formResponse'
+    
     const formData = new FormData()
-    formData.append('type', 'email')
-    formData.append('email', email)
-    formData.append('source', 'homepage')
+    formData.append('entry.644710253', email)
     
     try {
-      await fetch(SCRIPT_URL, {
+      await fetch(FORM_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: formData
@@ -221,7 +221,7 @@ function EmailForm() {
       setStatus('success')
       setEmail('')
     } catch {
-      setStatus('success') // assume success with no-cors
+      setStatus('success')
     }
   }
 
