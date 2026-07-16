@@ -265,14 +265,14 @@ function FeedbackForm() {
     if (!rating) return
     setStatus('loading')
 
+    const FEEDBACK_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd8yQZTC6lCp0zpSLabsxOTDSeP2B5AfMdJ1GyRwApxIF3GXw/formResponse'
+
     const formData = new FormData()
-    formData.append('type', 'feedback')
-    formData.append('rating', String(rating))
-    formData.append('comment', comment)
-    formData.append('page', 'homepage')
+    formData.append('entry.353878488', String(rating))
+    formData.append('entry.621768504', comment)
 
     try {
-      await fetch(SCRIPT_URL, {
+      await fetch(FEEDBACK_FORM_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: formData
