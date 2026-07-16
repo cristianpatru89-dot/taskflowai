@@ -43,26 +43,14 @@ export default function Home() {
 
       <hr className="border-gray-100 mx-6" />
 
-      <section id="toolkits" className="max-w-3xl mx-auto px-6 py-12">
-        <div className="text-center mb-8">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Toolkits</p>
-          <h2 className="text-2xl font-medium text-gray-900 mb-3">Built for your profession</h2>
-          <p className="text-sm text-gray-500">Each toolkit contains 6–10 outcome-focused tools with context and prompts built in.</p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {toolkits.map((t) => (
-            <a href={t.link} key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors cursor-pointer block">
-              <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
-                {t.icon}
-              </div>
-              <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
-              <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
-              <div className="text-xs text-gray-400">{t.tools} tools</div>
-              <div className={`text-xs font-medium mt-2 ${t.priceColor}`}>{t.price}</div>
-            </a>
-          ))}
-        </div>
-      </section>
+   <section id="toolkits" className="max-w-3xl mx-auto px-6 py-12">
+  <div className="text-center mb-8">
+    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Toolkits</p>
+    <h2 className="text-2xl font-medium text-gray-900 mb-3">Built for your profession</h2>
+    <p className="text-sm text-gray-500 mb-6">Each toolkit contains 6–10 outcome-focused tools with context and prompts built in.</p>
+    <ToolkitSearch />
+  </div>
+</section>
 
       <hr className="border-gray-100 mx-6" />
 
@@ -321,5 +309,64 @@ function FeedbackForm() {
         {status === 'loading' ? 'Sending...' : 'Send feedback'}
       </button>
     </form>
+  )
+}
+
+function ToolkitSearch() {
+  const [query, setQuery] = React.useState('')
+
+  const filtered = toolkits.filter(t =>
+    t.name.toLowerCase().includes(query.toLowerCase()) ||
+    t.desc.toLowerCase().includes(query.toLowerCase())
+  )
+
+  return (
+    <div>
+      <div className="relative max-w-sm mx-auto mb-8">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search toolkits — e.g. contracts, cold email, lesson plan..."
+          className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 bg-white"
+        />
+        {query && (
+          <button
+            onClick={() => setQuery('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="text-center py-8">
+          <p className="text-sm text-gray-400">No toolkits found for "{query}"</p>
+          <button onClick={() => setQuery('')} className="text-xs text-blue-600 mt-2">Clear search</button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {filtered.map((t) => (
+            <a href={t.link} key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors cursor-pointer block text-left">
+              <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
+                {t.icon}
+              </div>
+              <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
+              <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
+              <div className="text-xs text-gray-400">{t.tools} tools</div>
+              <div className={`text-xs font-medium mt-2 ${t.priceColor}`}>{t.price}</div>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {query && filtered.length > 0 && (
+        <p className="text-xs text-gray-400 text-center mt-4">
+          {filtered.length} toolkit{filtered.length !== 1 ? 's' : ''} found
+        </p>
+      )}
+    </div>
   )
 }
