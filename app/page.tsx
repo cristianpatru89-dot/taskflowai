@@ -6,18 +6,19 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
 
-      <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-        <div className="text-base font-medium">
-          TaskFlow<span className="text-blue-600">AI</span>
-        </div>
-        <div className="flex gap-5 items-center">
-          <a href="#toolkits" className="text-sm text-gray-500 hover:text-gray-900">Toolkits</a>
-          <a href="#pricing" className="text-sm text-gray-500 hover:text-gray-900">Pricing</a>
-          <button className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium">
-            Get started
-          </button>
-        </div>
-      </nav>
+     <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+  <a href="/" className="text-base font-medium">
+    TaskFlow<span className="text-blue-600">AI</span>
+  </a>
+  <div className="flex gap-5 items-center">
+    <a href="#toolkits" className="text-sm text-gray-500 hover:text-gray-900">Toolkits</a>
+    <a href="/how-to-use" className="text-sm text-gray-500 hover:text-gray-900">How to use AI</a>
+    <a href="/about" className="text-sm text-gray-500 hover:text-gray-900">About</a>
+    <a href="#pricing" className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium">
+      Get started
+    </a>
+  </div>
+</nav>
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mb-5">
