@@ -32,14 +32,11 @@ export default function About() {
         {/* Founder */}
         <div className="flex items-start gap-5 mb-12 p-6 bg-gray-50 rounded-2xl">
           <img
-            src="https://media.licdn.com/dms/image/v2/D4D03AQGzFpRNqBPyOA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1699451528244?e=1756944000&v=beta&t=placeholder"
-            alt="Cristian Patru"
-            className="w-16 h-16 rounded-full object-cover flex-shrink-0 bg-gray-200"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-            }}
-          />
+  src="https://media.licdn.com/..."
+  alt="Cristian Patru"
+  className="w-16 h-16 rounded-full object-cover flex-shrink-0 bg-gray-200"
+/>
+
           <div>
             <div className="text-sm font-medium text-gray-900 mb-0.5">Cristian Patru</div>
             <div className="text-xs text-gray-500 mb-3">Founder · Senior Product Manager · Cluj-Napoca, Romania</div>
