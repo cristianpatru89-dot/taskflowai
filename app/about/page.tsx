@@ -31,11 +31,10 @@ export default function About() {
 
         {/* Founder */}
         <div className="flex items-start gap-5 mb-12 p-6 bg-gray-50 rounded-2xl">
-          <img
-  src="https://media.licdn.com/..."
-  alt="Cristian Patru"
-  className="w-16 h-16 rounded-full object-cover flex-shrink-0 bg-gray-200"
-/>
+      <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600 text-xl font-medium">
+  CP
+</div>
+
 
           <div>
             <div className="text-sm font-medium text-gray-900 mb-0.5">Cristian Patru</div>
