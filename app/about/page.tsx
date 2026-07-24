@@ -33,19 +33,15 @@ export default function About() {
         <div className="flex items-start gap-5 mb-12 p-6 bg-gray-50 rounded-2xl">
       <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600 text-xl font-medium">
   CP
+<div className="mb-12 p-6 bg-gray-50 rounded-2xl">
+  <div className="text-sm font-medium text-gray-900 mb-0.5">Cristian Patru</div>
+  <div className="text-xs text-gray-500 mb-3">Founder · Senior Product Manager · Cluj-Napoca, Romania</div>
+  <div className="flex gap-2 flex-wrap">
+    {['Product strategy', 'AI/ML integration', 'Aviation tech', 'UX design'].map(tag => (
+      <span key={tag} className="text-xs px-2 py-0.5 bg-white border border-gray-200 rounded-full text-gray-600">{tag}</span>
+    ))}
+  </div>
 </div>
-
-
-          <div>
-            <div className="text-sm font-medium text-gray-900 mb-0.5">Cristian Patru</div>
-            <div className="text-xs text-gray-500 mb-3">Founder · Senior Product Manager · Cluj-Napoca, Romania</div>
-            <div className="flex gap-2 flex-wrap">
-              {['Product strategy', 'AI/ML integration', 'Aviation tech', 'UX design'].map(tag => (
-                <span key={tag} className="text-xs px-2 py-0.5 bg-white border border-gray-200 rounded-full text-gray-600">{tag}</span>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Story */}
         <div className="space-y-8 text-sm text-gray-600 leading-relaxed">
@@ -143,11 +139,12 @@ export default function About() {
           <h2 className="text-base font-medium text-gray-900 mb-2">Get in touch</h2>
           <p className="text-sm text-gray-500 mb-4">Have feedback, a partnership idea, or want to suggest a toolkit for your field? I read every message personally.</p>
           <div className="flex flex-col gap-2">
-            <a href="mailto:cristian.patru89@gmail.com" className="text-sm text-blue-600 hover:underline">
-              cristian.patru89@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/cristian-p89/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-              linkedin.com/in/cristian-p89
+           <a href="mailto:taskflowaiapp@gmail.com" className="text-sm text-blue-600 hover:underline">
+  taskflowaiapp@gmail.com
+</a>
+<a href="https://www.linkedin.com/company/135156482/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
+  TaskFlowAI on LinkedIn
+</a>
             </a>
           </div>
         </div>
