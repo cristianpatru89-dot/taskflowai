@@ -133,21 +133,19 @@ export default function About() {
             ))}
           </div>
         </div>
-
-        {/* Contact */}
-        <div className="border border-gray-100 rounded-2xl p-6 mb-16">
-          <h2 className="text-base font-medium text-gray-900 mb-2">Get in touch</h2>
-          <p className="text-sm text-gray-500 mb-4">Have feedback, a partnership idea, or want to suggest a toolkit for your field? I read every message personally.</p>
-          <div className="flex flex-col gap-2">
-           <a href="mailto:taskflowaiapp@gmail.com" className="text-sm text-blue-600 hover:underline">
-  taskflowaiapp@gmail.com
-</a>
-<a href="https://www.linkedin.com/company/135156482/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-  TaskFlowAI on LinkedIn
-</a>
-            </a>
-          </div>
-        </div>
+{/* Contact */}
+<div className="border border-gray-100 rounded-2xl p-6 mb-16">
+  <h2 className="text-base font-medium text-gray-900 mb-2">Get in touch</h2>
+  <p className="text-sm text-gray-500 mb-4">Have feedback, a partnership idea, or want to suggest a toolkit for your field? I read every message personally.</p>
+  <div className="flex flex-col gap-2">
+    <a href="mailto:taskflowaiapp@gmail.com" className="text-sm text-blue-600 hover:underline">
+      taskflowaiapp@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/company/135156482/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
+      TaskFlowAI on LinkedIn
+    </a>
+  </div>
+</div>
 
         {/* CTA */}
         <div className="bg-gray-900 rounded-2xl p-8 text-center">
