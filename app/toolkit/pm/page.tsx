@@ -396,7 +396,7 @@ export default function PMToolkit() {
   const [copied, setCopied] = useState(false)
   const [showMoreAI, setShowMoreAI] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
-  const [showMoreAI, setShowMoreAI] = useState(false)
+
 
   const activeW = workflows.find(w => w.id === activeWorkflow)
 
