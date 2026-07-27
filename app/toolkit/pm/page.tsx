@@ -595,12 +595,12 @@ export default function PMToolkit() {
                       </pre>
                     </div>
 
-                    {/* AI Tools */}
+                    {/* AI Tools Section */}
                     <div className="border-t border-gray-100 pt-4">
                       <p className="text-xs text-gray-500 mb-2">Open in your AI tool:</p>
                       <div className="flex flex-wrap gap-2">
                         {mainAITools.map(tool => (
-                          
+                          <a
                             key={tool.name}
                             href={tool.url}
                             target="_blank"
@@ -620,7 +620,7 @@ export default function PMToolkit() {
                           {showMoreAI && (
                             <div className="absolute bottom-full left-0 mb-1 bg-white border border-gray-100 rounded-xl shadow-lg p-2 z-10 w-44">
                               {moreAITools.map(tool => (
-                                
+                                <a
                                   key={tool.name}
                                   href={tool.url}
                                   target="_blank"
