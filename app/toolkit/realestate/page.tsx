@@ -543,6 +543,7 @@ export default function RealEstateToolkit() {
   const [inputs, setInputs] = useState<Record<string, Record<string, string>>>({})
   const [generatedPrompt, setGeneratedPrompt] = useState<string>('')
   const [copied, setCopied] = useState(false)
+  const [showMoreAI, setShowMoreAI] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
 
   const activeW = workflows.find(w => w.id === activeWorkflow)
