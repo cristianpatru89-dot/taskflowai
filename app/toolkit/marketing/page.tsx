@@ -670,31 +670,73 @@ export default function MarketingToolkit() {
                 </div>
 
                 {generatedPrompt && (
-                  <div className="px-5 py-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-xs font-medium text-gray-700">Your prompt — paste into ChatGPT, Claude, or Gemini</p>
-                      <button
-                        onClick={handleCopy}
-                        className={`text-xs px-3 py-1 rounded-lg border transition-colors ${
-                          copied
-                            ? 'bg-green-50 text-green-600 border-green-200'
-                            : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                        }`}
-                      >
-                        {copied ? '✓ Copied' : 'Copy'}
-                      </button>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg p-3 max-h-64 overflow-y-auto">
-                      <pre className="text-xs text-gray-700 whitespace-pre-wrap font-mono leading-relaxed">
-                        {generatedPrompt}
-                      </pre>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2">
-                      Tip: Start with workflow 06 (Brand Positioning) — it makes every other marketing output sharper.
-                    </p>
-                  </div>
-                )}
-
+  <div className="px-5 py-4">
+    <div className="flex justify-between items-center mb-2">
+      <p className="text-xs font-medium text-gray-700">Your prompt</p>
+      <button
+        onClick={handleCopy}
+        className={`text-xs px-3 py-1 rounded-lg border transition-colors ${
+          copied
+            ? 'bg-green-50 text-green-600 border-green-200'
+            : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+        }`}
+      >
+        {copied ? '✓ Copied' : 'Copy'}
+      </button>
+    </div>
+    <div className="bg-gray-50 rounded-lg p-3 max-h-48 overflow-y-auto mb-4">
+      <pre className="text-xs text-gray-700 whitespace-pre-wrap font-mono leading-relaxed">
+        {generatedPrompt}
+      </pre>
+    </div>
+    <div className="border-t border-gray-100 pt-4">
+      <p className="text-xs text-gray-500 mb-2">Open in your AI tool:</p>
+      <div className="flex flex-wrap gap-2">
+        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-green-50 text-green-700 border-green-100 hover:opacity-80">
+          🤖 ChatGPT
+        </a>
+        <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-orange-50 text-orange-700 border-orange-100 hover:opacity-80">
+          ⚡ Claude
+        </a>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-blue-50 text-blue-700 border-blue-100 hover:opacity-80">
+          ✨ Gemini
+        </a>
+        <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-indigo-50 text-indigo-700 border-indigo-100 hover:opacity-80">
+          🪟 Copilot
+        </a>
+        <div className="relative">
+          <button
+            onClick={() => setShowMoreAI(!showMoreAI)}
+            className="flex items-center gap-1 text-xs px-3 py-1.5 bg-gray-50 text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-100"
+          >
+            More {showMoreAI ? '▲' : '▾'}
+          </button>
+          {showMoreAI && (
+            <div className="absolute bottom-full left-0 mb-1 bg-white border border-gray-100 rounded-xl shadow-lg p-2 z-10 w-44">
+              {[
+                { name: 'Perplexity', url: 'https://perplexity.ai', emoji: '🔍' },
+                { name: 'Mistral', url: 'https://chat.mistral.ai', emoji: '🌊' },
+                { name: 'Grok', url: 'https://grok.com', emoji: 'X' },
+                { name: 'DeepSeek', url: 'https://chat.deepseek.com', emoji: '🐳' },
+                { name: 'Poe', url: 'https://poe.com', emoji: '💬' },
+                { name: 'You.com', url: 'https://you.com', emoji: '🔎' },
+                { name: 'HuggingChat', url: 'https://huggingface.co/chat', emoji: '🤗' },
+                { name: 'Cohere', url: 'https://coral.cohere.com', emoji: '🪸' },
+              ].map(tool => (
+                <a key={tool.name} href={tool.url} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 rounded-lg"
+                  onClick={() => setShowMoreAI(false)}>
+                  {tool.emoji} {tool.name}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      <p className="text-xs text-gray-400 mt-2">Copy your prompt first, then open the AI tool and paste.</p>
+    </div>
+  </div>
+)}
               </div>
             ) : null}
           </div>
