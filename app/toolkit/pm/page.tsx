@@ -394,6 +394,7 @@ export default function PMToolkit() {
   const [inputs, setInputs] = useState<Record<string, Record<string, string>>>({})
   const [generatedPrompt, setGeneratedPrompt] = useState<string>('')
   const [copied, setCopied] = useState(false)
+  const [showMoreAI, setShowMoreAI] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
   const [showMoreAI, setShowMoreAI] = useState(false)
 
