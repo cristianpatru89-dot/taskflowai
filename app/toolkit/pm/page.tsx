@@ -599,17 +599,17 @@ export default function PMToolkit() {
                     <div className="border-t border-gray-100 pt-4">
                       <p className="text-xs text-gray-500 mb-2">Open in your AI tool:</p>
                       <div className="flex flex-wrap gap-2">
-                        {mainAITools.map(tool => (
-                          <a
-                            key={tool.name}
-                            href={tool.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg hover:opacity-80 transition-opacity ${tool.bg}`}
-                          >
-                            {tool.emoji} {tool.name}
-                          </a>
-                        ))}
+{mainAITools.map(tool => (
+  <a
+    key={tool.name}
+    href={tool.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors"
+  >
+    {tool.emoji} {tool.name}
+  </a>
+))}
                         <div className="relative">
                           <button
                             onClick={() => setShowMoreAI(!showMoreAI)}
