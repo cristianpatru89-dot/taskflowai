@@ -319,7 +319,7 @@ export default function ToolkitsPage() {
           <div className="space-y-3">
             {filtered.map(t => (
               
-                key={t.name}
+              <a  key={t.name}
                 href={t.link}
                 className="flex items-center gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all block"
               >
