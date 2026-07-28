@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'TaskFlowAI was built by Cristian Patru, a Senior Product Manager with 6+ years experience. AI should accelerate your expertise, not replace it.',
+}
+
 export default function About() {
   return (
     <div className="min-h-screen bg-white">

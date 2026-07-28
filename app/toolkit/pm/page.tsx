@@ -1,5 +1,7 @@
 'use client'
 
+// Note: metadata must be in a separate file for client components
+
 import { useState } from 'react'
 
 const workflows = [
