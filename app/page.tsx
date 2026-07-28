@@ -153,12 +153,21 @@ export default function Home() {
   </div>
 </section>
 
-      <footer className="border-t border-gray-100 py-8 text-center">
-        <div className="text-sm font-medium text-gray-900 mb-1">
-          TaskFlow<span className="text-blue-600">AI</span>
-        </div>
-        <div className="text-xs text-gray-400">AI toolkits for professionals who have real work to do.</div>
-      </footer>
+     <footer className="border-t border-gray-100 py-8 px-6">
+  <div className="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div className="text-sm font-medium text-gray-900">
+      TaskFlow<span className="text-blue-600">AI</span>
+      <p className="text-xs text-gray-400 font-normal mt-1">AI toolkits for professionals who have real work to do.</p>
+    </div>
+    <div className="flex items-center gap-5">
+      <a href="mailto:taskflowaiapp@gmail.com" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">✉️ Email</a>
+      <a href="https://www.linkedin.com/company/taskflowai-app/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">💼 LinkedIn</a>
+      <a href="https://www.instagram.com/taskflowaiapp/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">📸 Instagram</a>
+      <a href="/about" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">About</a>
+      <a href="/how-to-use" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">How to use</a>
+    </div>
+  </div>
+</footer>
 
     </main>
   )

@@ -93,17 +93,20 @@ export default function About() {
         </div>
 
         <div className="border border-gray-100 rounded-2xl p-6 mb-16">
-          <h2 className="text-base font-medium text-gray-900 mb-2">Get in touch</h2>
-          <p className="text-sm text-gray-500 mb-4">Have feedback, a partnership idea, or want to suggest a toolkit for your field? We read every message personally.</p>
-          <div className="flex flex-col gap-2">
-            <a href="mailto:taskflowaiapp@gmail.com" className="text-sm text-blue-600 hover:underline">
-              taskflowaiapp@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/company/135156482/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-              TaskFlowAI on LinkedIn
-            </a>
-          </div>
-        </div>
+  <h2 className="text-base font-medium text-gray-900 mb-2">Get in touch</h2>
+  <p className="text-sm text-gray-500 mb-4">Have feedback, a partnership idea, or want to suggest a toolkit for your field? We read every message personally.</p>
+  <div className="flex flex-col gap-3">
+    <a href="mailto:taskflowaiapp@gmail.com" className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors">
+      <span>✉️</span> taskflowaiapp@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/company/taskflowai-app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors">
+      <span>💼</span> LinkedIn — TaskFlowAI
+    </a>
+    <a href="https://www.instagram.com/taskflowaiapp/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-700 hover:text-pink-600 transition-colors">
+      <span>📸</span> Instagram — @taskflowaiapp
+    </a>
+  </div>
+</div>
 
         <div className="bg-gray-900 rounded-2xl p-8 text-center">
           <h2 className="text-base font-medium text-white mb-2">Ready to work smarter?</h2>
