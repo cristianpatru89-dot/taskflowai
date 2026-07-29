@@ -1,6 +1,6 @@
 'use client'
 
-import Navbar from '../../../components/navbar';
+import Navbar from '@/components/navbar';
 
 // Note: metadata must be in a separate file for client components
 
