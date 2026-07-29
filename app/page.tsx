@@ -144,7 +144,7 @@ export default function Home() {
   </div>
 </section>
 
-     <footer className="border-t border-gray-100 py-8 px-6">
+<footer className="border-t border-gray-100 py-8 px-6">
   <div className="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
     <div className="text-sm font-medium text-gray-900">
       TaskFlow<span className="text-blue-600">AI</span>
