@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react';
-
+import React, { useState, FormEvent } from 'react';
 import Navbar from '@/components/navbar';
 
 export default function Home() {
