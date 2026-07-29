@@ -9,9 +9,6 @@ export default function Home() {
       <Navbar />
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
-
-
-      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mb-5">
           ✦ AI toolkits for professionals
         </div>
@@ -35,14 +32,14 @@ export default function Home() {
 
       <hr className="border-gray-100 mx-6" />
 
-   <section id="toolkits" className="max-w-3xl mx-auto px-6 py-12">
-  <div className="text-center mb-8">
-    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Toolkits</p>
-    <h2 className="text-2xl font-medium text-gray-900 mb-3">Built for your profession</h2>
-    <p className="text-sm text-gray-500 mb-6">Each toolkit contains 6–10 outcome-focused tools with context and prompts built in.</p>
-    <ToolkitSearch />
-  </div>
-</section>
+      <section id="toolkits" className="max-w-3xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Toolkits</p>
+          <h2 className="text-2xl font-medium text-gray-900 mb-3">Built for your profession</h2>
+          <p className="text-sm text-gray-500 mb-6">Each toolkit contains 6–10 outcome-focused tools with context and prompts built in.</p>
+          <ToolkitSearch />
+        </div>
+      </section>
 
       <hr className="border-gray-100 mx-6" />
 
@@ -120,47 +117,47 @@ export default function Home() {
         </div>
       </section>
 
-{/* Email Capture Section */}
-<section className="bg-gray-900 py-16 px-6">
-  <div className="max-w-2xl mx-auto text-center">
-    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Free access</p>
-    <h2 className="text-2xl font-medium text-white mb-3">
-      Get 3 free workflows — no credit card
-    </h2>
-    <p className="text-sm text-gray-400 mb-8">
-      Enter your email and we will send you 3 hand-picked workflows from the PM, Legal, and Sales toolkits. Free forever.
-    </p>
-    <EmailForm />
-  </div>
-</section>
+      {/* Email Capture Section */}
+      <section className="bg-gray-900 py-16 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Free access</p>
+          <h2 className="text-2xl font-medium text-white mb-3">
+            Get 3 free workflows — no credit card
+          </h2>
+          <p className="text-sm text-gray-400 mb-8">
+            Enter your email and we will send you 3 hand-picked workflows from the PM, Legal, and Sales toolkits. Free forever.
+          </p>
+          <EmailForm />
+        </div>
+      </section>
 
-{/* Feedback Section */}
-<section className="py-12 px-6 border-t border-gray-100">
-  <div className="max-w-xl mx-auto text-center">
-    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Feedback</p>
-    <h2 className="text-xl font-medium text-gray-900 mb-2">How are we doing?</h2>
-    <p className="text-sm text-gray-500 mb-6">Tell us what you think — it takes 30 seconds.</p>
-    <FeedbackForm />
-  </div>
-</section>
+      {/* Feedback Section */}
+      <section className="py-12 px-6 border-t border-gray-100">
+        <div className="max-w-xl mx-auto text-center">
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Feedback</p>
+          <h2 className="text-xl font-medium text-gray-900 mb-2">How are we doing?</h2>
+          <p className="text-sm text-gray-500 mb-6">Tell us what you think — it takes 30 seconds.</p>
+          <FeedbackForm />
+        </div>
+      </section>
 
-<footer className="border-t border-gray-100 py-8 px-6">
-  <div className="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-    <div className="text-sm font-medium text-gray-900">
-      TaskFlow<span className="text-blue-600">AI</span>
-      <p className="text-xs text-gray-400 font-normal mt-1">AI toolkits for professionals who have real work to do.</p>
-    </div>
-    <div className="flex items-center gap-5">
-      <a href="mailto:taskflowaiapp@gmail.com" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">✉️ Email</a>
-      <a href="https://www.linkedin.com/company/taskflowai-app/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">💼 LinkedIn</a>
-      <a href="https://www.instagram.com/taskflowaiapp/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">📸 Instagram</a>
-      <a href="/about" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">About</a>
-      <a href="/how-to-use" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">How to use</a>
-    </div>
-  </div>
-</footer>
-  </main>
-)
+      <footer className="border-t border-gray-100 py-8 px-6">
+        <div className="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-sm font-medium text-gray-900">
+            TaskFlow<span className="text-blue-600">AI</span>
+            <p className="text-xs text-gray-400 font-normal mt-1">AI toolkits for professionals who have real work to do.</p>
+          </div>
+          <div className="flex items-center gap-5">
+            <a href="mailto:taskflowaiapp@gmail.com" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">✉️ Email</a>
+            <a href="https://www.linkedin.com/company/taskflowai-app/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">💼 LinkedIn</a>
+            <a href="https://www.instagram.com/taskflowaiapp/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">📸 Instagram</a>
+            <a href="/about" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">About</a>
+            <a href="/how-to-use" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">How to use</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
 }
 
 const toolkits = [
@@ -187,10 +184,10 @@ const steps = [
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypaY6OIg8J1MyXVYdFpZuQmC9QHh0iB9iqnUqPC0IFOV2bWe8gILaJyZ-aiBnb00V6/exec'
 
 function EmailForm() {
-  const [email, setEmail] = React.useState('')
-  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle')
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!email) return
     setStatus('loading')
@@ -244,11 +241,11 @@ function EmailForm() {
 }
 
 function FeedbackForm() {
-  const [rating, setRating] = React.useState(0)
-  const [comment, setComment] = React.useState('')
-  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle')
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!rating) return
     setStatus('loading')
@@ -313,7 +310,7 @@ function FeedbackForm() {
 }
 
 function ToolkitSearch() {
-  const [query, setQuery] = React.useState('')
+  const [query, setQuery] = useState('')
 
   const filtered = toolkits.filter(t =>
     t.name.toLowerCase().includes(query.toLowerCase()) ||
