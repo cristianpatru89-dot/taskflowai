@@ -6,18 +6,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
 
-     <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-  <a href="/" className="text-base font-medium">
-    TaskFlow<span className="text-blue-600">AI</span>
-  </a>
-  <div className="flex gap-5 items-center">
-    <a href="#toolkits" className="text-sm text-gray-500 hover:text-gray-900">Toolkits</a>
-    <a href="/how-to-use" className="text-sm text-gray-500 hover:text-gray-900">How to use AI</a>
-    <a href="/about" className="text-sm text-gray-500 hover:text-gray-900">About</a>
-    <a href="#pricing" className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium">
-      Get started
-    </a>
-  </div>
+     <nav import Navbar from '../components/Navbar'
+// sau pentru pagini în subfoldere:
+import Navbar from '../../components/Navbar'
+// sau pentru toolkit pages:
+import Navbar from '../../../components/Navbar'
 </nav>
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">

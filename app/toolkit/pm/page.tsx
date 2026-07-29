@@ -1,5 +1,7 @@
 'use client'
 
+import Navbar from '../components/Navbar';
+
 // Note: metadata must be in a separate file for client components
 
 import { useState } from 'react'
@@ -447,15 +449,7 @@ export default function PMToolkit() {
   return (
     <div className="min-h-screen bg-white">
 
-      <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-        <a href="/" className="text-base font-medium">
-          TaskFlow<span className="text-blue-600">AI</span>
-        </a>
-        <div className="flex items-center gap-3">
-          <span className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">PM Toolkit</span>
-          <span className="text-xs text-gray-400">10 workflows</span>
-        </div>
-      </nav>
+    <Navbar active="toolkits" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
 

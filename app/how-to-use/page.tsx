@@ -1,27 +1,19 @@
 import type { Metadata } from 'next'
 
+import Navbar from '../components/Navbar';
+
 export const metadata: Metadata = {
   title: 'How to Use AI',
   description: 'Learn how to use TaskFlowAI workflows with ChatGPT, Claude, Gemini, and other AI tools to get professional outputs in minutes.',
 }
 
+import Navbar from '../components/Navbar';
+
 export default function HowToUse() {
   return (
     <div className="min-h-screen bg-white">
 
-      <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-        <a href="/" className="text-base font-medium">
-          TaskFlow<span className="text-blue-600">AI</span>
-        </a>
-        <div className="flex gap-5 items-center">
-          <a href="/#toolkits" className="text-sm text-gray-500 hover:text-gray-900">Toolkits</a>
-          <a href="/how-to-use" className="text-sm text-gray-900 font-medium">How to use AI</a>
-          <a href="/about" className="text-sm text-gray-500 hover:text-gray-900">About</a>
-          <a href="/#pricing" className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium">
-            Get started
-          </a>
-        </div>
-      </nav>
+    <Navbar active="toolkits" />
 
       <div className="max-w-2xl mx-auto px-6 py-16">
 
