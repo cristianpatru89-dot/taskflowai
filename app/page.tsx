@@ -6,7 +6,9 @@ import Navbar from '@/components/navbar';
 export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
+      <Navbar />
 
+      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
 
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
