@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/navbar';
 
 export const metadata: Metadata = {
   title: 'How to Use AI',
   description: 'Learn how to use TaskFlowAI workflows with ChatGPT, Claude, Gemini, and other AI tools to get professional outputs in minutes.',
 }
 
-import Navbar from '../components/Navbar';
+
 
 export default function HowToUse() {
   return (

@@ -1,17 +1,13 @@
 'use client'
 
-import Navbar from './components/Navbar'
+
+import Navbar from '../components/navbar';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
 
-     <nav import Navbar from '../components/Navbar'
-// sau pentru pagini în subfoldere:
-import Navbar from '../../components/Navbar'
-// sau pentru toolkit pages:
-import Navbar from '../../../components/Navbar'
-</nav>
+
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mb-5">
