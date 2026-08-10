@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
+import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
 
 export default function Navbar({ active }: { active?: string }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { isSignedIn, isLoaded } = useUser()
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-100 relative">
@@ -24,22 +25,27 @@ export default function Navbar({ active }: { active?: string }) {
           About
         </a>
 
-        <SignedOut>
-          <SignInButton mode="modal">
-            <button className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-              Sign in
-            </button>
-          </SignInButton>
-          <SignUpButton mode="modal">
-            <button className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
-              Get started
-            </button>
-          </SignUpButton>
-        </SignedOut>
-
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
-        </SignedIn>
+        {/* Afișare condiționată bazată pe starea de încărcare și autentificare */}
+        {isLoaded && (
+          <>
+            {!isSignedIn ? (
+              <>
+                <SignInButton mode="modal">
+                  <button className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                    Sign in
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                    Get started
+                  </button>
+                </SignUpButton>
+              </>
+            ) : (
+              <UserButton afterSignOutUrl="/" />
+            )}
+          </>
+        )}
       </div>
 
       {/* Mobile hamburger */}
@@ -56,19 +62,27 @@ export default function Navbar({ active }: { active?: string }) {
           <a href="/toolkits" className="text-sm text-gray-700" onClick={() => setMenuOpen(false)}>Toolkits</a>
           <a href="/how-to-use" className="text-sm text-gray-700" onClick={() => setMenuOpen(false)}>How to use AI</a>
           <a href="/about" className="text-sm text-gray-700" onClick={() => setMenuOpen(false)}>About</a>
-          <SignedOut>
-            <SignInButton mode="modal">
-              <button className="text-sm text-gray-700 text-left">Sign in</button>
-            </SignInButton>
-            <SignUpButton mode="modal">
-              <button className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium text-center">
-                Get started
-              </button>
-            </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
+          
+          {isLoaded && (
+            <>
+              {!isSignedIn ? (
+                <>
+                  <SignInButton mode="modal">
+                    <button className="text-sm text-gray-700 text-left">Sign in</button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button className="text-sm px-4 py-2 bg-gray-900 text-white rounded-lg font-medium text-center">
+                      Get started
+                    </button>
+                  </SignUpButton>
+                </>
+              ) : (
+                <div className="flex justify-start pt-2">
+                  <UserButton afterSignOutUrl="/" />
+                </div>
+              )}
+            </>
+          )}
         </div>
       )}
     </nav>
