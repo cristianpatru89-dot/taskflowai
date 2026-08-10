@@ -25,7 +25,6 @@ export default function Navbar({ active }: { active?: string }) {
           About
         </a>
 
-        {/* Afișare condiționată bazată pe starea de încărcare și autentificare */}
         {isLoaded && (
           <>
             {!isSignedIn ? (
@@ -42,7 +41,7 @@ export default function Navbar({ active }: { active?: string }) {
                 </SignUpButton>
               </>
             ) : (
-              <UserButton afterSignOutUrl="/" />
+              <UserButton />
             )}
           </>
         )}
@@ -78,7 +77,7 @@ export default function Navbar({ active }: { active?: string }) {
                 </>
               ) : (
                 <div className="flex justify-start pt-2">
-                  <UserButton afterSignOutUrl="/" />
+                  <UserButton />
                 </div>
               )}
             </>
