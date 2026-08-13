@@ -1,7 +1,6 @@
 'use client'
 
 import Navbar from '@/components/navbar';
-
 import { useState } from 'react'
 
 const toolkits = [
@@ -17,6 +16,7 @@ const toolkits = [
     link: '/toolkit/pm',
     industry: 'Tech',
     badge: 'Most popular',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Legal',
@@ -30,6 +30,7 @@ const toolkits = [
     link: '/toolkit/legal',
     industry: 'Legal',
     badge: 'Highest value',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Recruiting',
@@ -43,6 +44,7 @@ const toolkits = [
     link: '/toolkit/recruiting',
     industry: 'HR',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Finance',
@@ -56,6 +58,7 @@ const toolkits = [
     link: '/toolkit/finance',
     industry: 'Finance',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Healthcare',
@@ -69,6 +72,7 @@ const toolkits = [
     link: '/toolkit/healthcare',
     industry: 'Healthcare',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Executive',
@@ -82,6 +86,7 @@ const toolkits = [
     link: '/toolkit/executive',
     industry: 'Leadership',
     badge: 'Premium',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Sales',
@@ -95,6 +100,7 @@ const toolkits = [
     link: '/toolkit/sales',
     industry: 'Sales',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Marketing',
@@ -108,6 +114,7 @@ const toolkits = [
     link: '/toolkit/marketing',
     industry: 'Marketing',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Education',
@@ -121,6 +128,7 @@ const toolkits = [
     link: '/toolkit/education',
     industry: 'Education',
     badge: 'Best value',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Consulting',
@@ -134,6 +142,7 @@ const toolkits = [
     link: '/toolkit/consulting',
     industry: 'Consulting',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Startup',
@@ -147,6 +156,7 @@ const toolkits = [
     link: '/toolkit/startup',
     industry: 'Startup',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
   {
     name: 'Real Estate',
@@ -160,12 +170,84 @@ const toolkits = [
     link: '/toolkit/realestate',
     industry: 'Real Estate',
     badge: '',
+    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
   },
 ]
 
 const industries = ['All', 'Tech', 'Legal', 'HR', 'Finance', 'Healthcare', 'Leadership', 'Sales', 'Marketing', 'Education', 'Consulting', 'Startup', 'Real Estate']
 
 const priceRanges = ['All prices', 'Under $80', '$80–$100', 'Over $100']
+
+function ToolkitSearch() {
+  const [query, setQuery] = useState('')
+
+  const filtered = toolkits.filter(t =>
+    t.name.toLowerCase().includes(query.toLowerCase()) ||
+    t.desc.toLowerCase().includes(query.toLowerCase())
+  )
+
+  return (
+    <div>
+      <div className="relative max-w-sm mx-auto mb-8">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search toolkits — e.g. contracts, cold email, lesson plan..."
+          className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 bg-white"
+        />
+        {query && (
+          <button
+            onClick={() => setQuery('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="text-center py-8">
+          <p className="text-sm text-gray-400">No toolkits found for "{query}"</p>
+          <button onClick={() => setQuery('')} className="text-xs text-blue-600 mt-2">Clear search</button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {filtered.map((t) => (
+            <div key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors flex flex-col">
+              <a href={t.link} className="flex-1 block">
+                <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
+                  {t.icon}
+                </div>
+                <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
+                <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
+                <div className="text-xs text-gray-400">{t.tools} tools</div>
+              </a>
+              <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
+                <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
+                <a
+                  href={t.buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                >
+                  Buy
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {query && filtered.length > 0 && (
+        <p className="text-xs text-gray-400 text-center mt-4">
+          {filtered.length} toolkit{filtered.length !== 1 ? 's' : ''} found
+        </p>
+      )}
+    </div>
+  )
+}
 
 export default function ToolkitsPage() {
   const [search, setSearch] = useState('')
@@ -197,6 +279,19 @@ export default function ToolkitsPage() {
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">All toolkits</p>
           <h1 className="text-3xl font-medium text-gray-900 mb-3">Find your toolkit</h1>
           <p className="text-base text-gray-500">12 toolkits, 120 workflows. Built for professionals who have real work to do.</p>
+        </div>
+
+        {/* Secțiunea cu butonul de "Get all access" adăugată conform cerinței */}
+        <div className="mb-12 p-6 border border-gray-200 rounded-xl bg-gray-50 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 className="text-lg font-medium text-gray-900 mb-1">Get All Access Pass</h2>
+            <p className="text-xs text-gray-500">Unlock all 12 toolkits and future updates instantly.</p>
+          </div>
+          <div className="w-full md:w-auto">
+            <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto block text-center text-sm px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+              Get all access
+            </a>
+          </div>
         </div>
 
         {/* Filters */}
@@ -278,28 +373,35 @@ export default function ToolkitsPage() {
         {view === 'grid' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map(t => (
-              
-              <a  key={t.name}
-                href={t.link}
-                className="border border-gray-100 rounded-xl p-5 hover:border-gray-200 hover:shadow-sm transition-all block"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl ${t.iconBg}`}>
-                    {t.icon}
-                  </div>
-                  {t.badge && (
-                    <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-600 border border-gray-100 rounded-full">
-                      {t.badge}
-                    </span>
-                  )}
+              <div key={t.name} className="border border-gray-100 rounded-xl p-5 hover:border-gray-200 hover:shadow-sm transition-all flex flex-col justify-between">
+                <div>
+                  <a href={t.link} className="block">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl ${t.iconBg}`}>
+                        {t.icon}
+                      </div>
+                      {t.badge && (
+                        <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-600 border border-gray-100 rounded-full">
+                          {t.badge}
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="text-sm font-medium text-gray-900 mb-1">{t.name}</h2>
+                    <p className="text-xs text-gray-500 leading-relaxed mb-3">{t.longDesc}</p>
+                  </a>
                 </div>
-                <h2 className="text-sm font-medium text-gray-900 mb-1">{t.name}</h2>
-                <p className="text-xs text-gray-500 leading-relaxed mb-3">{t.longDesc}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400">{t.tools} workflows</span>
+                <div className="flex items-center justify-between pt-3 border-t border-gray-50 mt-2">
                   <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
+                  <a
+                    href={t.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                  >
+                    Buy
+                  </a>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         )}
@@ -308,26 +410,34 @@ export default function ToolkitsPage() {
         {view === 'list' && (
           <div className="space-y-3">
             {filtered.map(t => (
-              
-              <a  key={t.name}
-                href={t.link}
-                className="flex items-center gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all block"
-              >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0 ${t.iconBg}`}>
-                  {t.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <h2 className="text-sm font-medium text-gray-900">{t.name}</h2>
-                    {t.badge && <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-500 border border-gray-100 rounded-full">{t.badge}</span>}
+              <div key={t.name} className="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all">
+                <a href={t.link} className="flex items-center gap-4 flex-1 min-w-0">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0 ${t.iconBg}`}>
+                    {t.icon}
                   </div>
-                  <p className="text-xs text-gray-500 truncate">{t.desc}</p>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h2 className="text-sm font-medium text-gray-900">{t.name}</h2>
+                      {t.badge && <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-500 border border-gray-100 rounded-full">{t.badge}</span>}
+                    </div>
+                    <p className="text-xs text-gray-500 truncate">{t.desc}</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4 flex-shrink-0">
+                  <div className="text-right">
+                    <div className={`text-sm font-medium ${t.priceColor}`}>{t.price}</div>
+                    <div className="text-xs text-gray-400">{t.tools} workflows</div>
+                  </div>
+                  <a
+                    href={t.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                  >
+                    Buy
+                  </a>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <div className={`text-sm font-medium ${t.priceColor}`}>{t.price}</div>
-                  <div className="text-xs text-gray-400">{t.tools} workflows</div>
-                </div>
-              </a>
+              </div>
             ))}
           </div>
         )}
@@ -340,6 +450,12 @@ export default function ToolkitsPage() {
             </button>
           </div>
         )}
+
+        {/* Inserarea funcției ToolkitSearch cerută în instrucțiuni */}
+        <div className="mt-16 pt-12 border-t border-gray-100">
+          <h2 className="text-xl font-medium text-gray-900 mb-6 text-center">Quick Search Component</h2>
+          <ToolkitSearch />
+        </div>
 
       </div>
 
