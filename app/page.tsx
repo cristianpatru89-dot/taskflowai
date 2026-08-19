@@ -87,17 +87,17 @@ export default function Home() {
             <div className="text-xs px-2 py-0.5 bg-blue-50 text-blue-600 rounded inline-block mb-2">Most popular</div>
             <div className="text-sm font-medium text-gray-900 mb-1">All toolkits</div>
             <div className="text-2xl font-medium text-gray-900 my-2">$299</div>
-            <div className="text-xs text-gray-500 mb-4">All 6 professions, forever</div>
+            <div className="text-xs text-gray-500 mb-4">All 12 professions, forever</div>
             <ul className="space-y-1 mb-5">
-              {["40+ outcome tools", "All future toolkits", "Priority support", "Team sharing"].map(f => (
+              {["120+ outcome tools", "All future toolkits", "Priority support", "Team sharing"].map(f => (
                 <li key={f} className="text-xs text-gray-500 flex items-center gap-2">
                   <span className="text-green-500">✓</span>{f}
                 </li>
               ))}
             </ul>
-            <button className="w-full text-sm py-2 bg-gray-900 text-white rounded-lg font-medium">
+            <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="block text-center text-sm py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
               Get all access
-            </button>
+            </a>
           </div>
           <div className="bg-white border border-gray-100 rounded-xl p-5">
             <div className="text-sm font-medium text-gray-900 mb-1">Teams</div>
@@ -110,9 +110,9 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <button className="w-full text-sm py-2 border border-gray-200 rounded-lg text-gray-900">
+            <a href="mailto:taskflowaiapp@gmail.com" className="block text-center text-sm py-2 border border-gray-200 rounded-lg text-gray-900">
               Contact us
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -156,23 +156,24 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
     </main>
-  );
+  )
 }
 
 const toolkits = [
-  { name: "Product Manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 10, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600", link: "/toolkit/pm" },
-  { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 10, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700", link: "/toolkit/legal" },
-  { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 10, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600", link: "/toolkit/recruiting" },
-  { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 10, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600", link: "/toolkit/finance" },
-  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 10, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "/toolkit/healthcare" },
-  { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 10, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600", link: "/toolkit/executive" },
-  { name: "Sales", desc: "Cold emails, proposals, objection handling, negotiation.", tools: 10, price: "$79", icon: "💼", iconBg: "bg-orange-50", priceColor: "text-orange-600", link: "/toolkit/sales" },
-  { name: "Marketing", desc: "Campaign briefs, content strategy, email sequences, ads.", tools: 10, price: "$79", icon: "📣", iconBg: "bg-pink-50", priceColor: "text-pink-600", link: "/toolkit/marketing" },
-  { name: "Education", desc: "Lesson plans, assessments, parent comms, report comments.", tools: 10, price: "$59", icon: "📚", iconBg: "bg-yellow-50", priceColor: "text-yellow-600", link: "/toolkit/education" },
-  { name: "Consulting", desc: "Proposals, SOWs, client updates, findings reports.", tools: 10, price: "$99", icon: "🔍", iconBg: "bg-slate-50", priceColor: "text-slate-600", link: "/toolkit/consulting" },
-  { name: "Startup", desc: "Pitch decks, investor updates, GTM strategy, OKRs.", tools: 10, price: "$99", icon: "🚀", iconBg: "bg-violet-50", priceColor: "text-violet-600", link: "/toolkit/startup" },
-  { name: "Real Estate", desc: "Listings, valuations, market analysis, investment analysis.", tools: 10, price: "$79", icon: "🏠", iconBg: "bg-emerald-50", priceColor: "text-emerald-600", link: "/toolkit/realestate" },
+  { name: "Product Manager", desc: "PRDs, user stories, prioritization, stakeholder updates.", tools: 10, price: "$79", icon: "⚡", iconBg: "bg-blue-50", priceColor: "text-blue-600", link: "/toolkit/pm", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/3de8096f-6512-4c82-a72d-06f396c8bb37" },
+  { name: "Legal", desc: "Contract review, NDA drafting, GDPR, due diligence.", tools: 10, price: "$129", icon: "⚖️", iconBg: "bg-green-50", priceColor: "text-green-700", link: "/toolkit/legal", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/1a53e01f-79ff-49ea-9ef4-6685877b219e" },
+  { name: "Recruiting", desc: "Job descriptions, interviews, scorecards, offer letters.", tools: 10, price: "$69", icon: "👥", iconBg: "bg-amber-50", priceColor: "text-amber-600", link: "/toolkit/recruiting", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/9b11bbe5-79cb-4597-82ad-8328cbe166c1" },
+  { name: "Finance", desc: "Report analysis, investor memos, board narratives.", tools: 10, price: "$99", icon: "📊", iconBg: "bg-red-50", priceColor: "text-red-600", link: "/toolkit/finance", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/863a0977-107e-464d-9039-a41bc89d5968" },
+  { name: "Healthcare", desc: "Clinical notes, patient comms, medical literature.", tools: 10, price: "$99", icon: "🏥", iconBg: "bg-purple-50", priceColor: "text-purple-600", link: "/toolkit/healthcare", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/e5533ac5-a283-4ad4-9ab2-8ab1e329ea01" },
+  { name: "Executive", desc: "Board decks, crisis comms, all-hands speeches.", tools: 10, price: "$149", icon: "🎯", iconBg: "bg-teal-50", priceColor: "text-teal-600", link: "/toolkit/executive", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/451c1afc-6c19-4734-adc7-ab1397b81218" },
+  { name: "Sales", desc: "Cold emails, proposals, objection handling, negotiation.", tools: 10, price: "$79", icon: "💼", iconBg: "bg-orange-50", priceColor: "text-orange-600", link: "/toolkit/sales", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/c3cba603-01f3-4bd1-b5b4-41f89b5d454e" },
+  { name: "Marketing", desc: "Campaign briefs, content strategy, email sequences, ads.", tools: 10, price: "$79", icon: "📣", iconBg: "bg-pink-50", priceColor: "text-pink-600", link: "/toolkit/marketing", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/0e8831f1-46ca-455d-8429-1ffeef1e560a" },
+  { name: "Education", desc: "Lesson plans, assessments, parent comms, report comments.", tools: 10, price: "$59", icon: "📚", iconBg: "bg-yellow-50", priceColor: "text-yellow-600", link: "/toolkit/education", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/ab3ce3e4-3b8c-4a01-9fd5-fbaf76af9a74" },
+  { name: "Consulting", desc: "Proposals, SOWs, client updates, findings reports.", tools: 10, price: "$99", icon: "🔍", iconBg: "bg-slate-50", priceColor: "text-slate-600", link: "/toolkit/consulting", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/34df1958-355f-4ad4-bba1-027450f46424" },
+  { name: "Startup", desc: "Pitch decks, investor updates, GTM strategy, OKRs.", tools: 10, price: "$99", icon: "🚀", iconBg: "bg-violet-50", priceColor: "text-violet-600", link: "/toolkit/startup", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/94a22882-854b-4aa8-8506-002871cdfeb7" },
+  { name: "Real Estate", desc: "Listings, valuations, market analysis, investment analysis.", tools: 10, price: "$79", icon: "🏠", iconBg: "bg-emerald-50", priceColor: "text-emerald-600", link: "/toolkit/realestate", buyUrl: "https://taskflowai.lemonsqueezy.com/checkout/buy/b1786112-aaed-4f9f-a0d4-5619787832b6" },
 ]
 
 const steps = [
@@ -191,18 +192,13 @@ function EmailForm() {
     e.preventDefault()
     if (!email) return
     setStatus('loading')
-    
+
     const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScQpLielwdW6HCQamDkUArStTusygQV4NFbugxY2fldHYvu1w/formResponse'
-    
     const formData = new FormData()
     formData.append('entry.644710253', email)
-    
+
     try {
-      await fetch(FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      })
+      await fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: formData })
       setStatus('success')
       setEmail('')
     } catch {
@@ -251,17 +247,12 @@ function FeedbackForm() {
     setStatus('loading')
 
     const FEEDBACK_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd8yQZTC6lCp0zpSLabsxOTDSeP2B5AfMdJ1GyRwApxIF3GXw/formResponse'
-
     const formData = new FormData()
     formData.append('entry.353878488', String(rating))
     formData.append('entry.621768504', comment)
 
     try {
-      await fetch(FEEDBACK_FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      })
+      await fetch(FEEDBACK_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData })
       setStatus('success')
     } catch {
       setStatus('success')
@@ -310,7 +301,7 @@ function FeedbackForm() {
 }
 
 function ToolkitSearch() {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = React.useState('')
 
   const filtered = toolkits.filter(t =>
     t.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -329,12 +320,7 @@ function ToolkitSearch() {
           className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 bg-white"
         />
         {query && (
-          <button
-            onClick={() => setQuery('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs"
-          >
-            ✕
-          </button>
+          <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs">✕</button>
         )}
       </div>
 
@@ -346,15 +332,22 @@ function ToolkitSearch() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {filtered.map((t) => (
-            <a href={t.link} key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors cursor-pointer block text-left">
-              <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
-                {t.icon}
+            <div key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors flex flex-col">
+              <a href={t.link} className="flex-1 block">
+                <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
+                  {t.icon}
+                </div>
+                <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
+                <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
+                <div className="text-xs text-gray-400">{t.tools} tools</div>
+              </a>
+              <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
+                <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
+                <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                  Buy
+                </a>
               </div>
-              <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
-              <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
-              <div className="text-xs text-gray-400">{t.tools} tools</div>
-              <div className={`text-xs font-medium mt-2 ${t.priceColor}`}>{t.price}</div>
-            </a>
+            </div>
           ))}
         </div>
       )}

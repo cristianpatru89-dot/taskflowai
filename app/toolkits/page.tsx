@@ -1,253 +1,25 @@
 'use client'
 
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar'
 import { useState } from 'react'
 
 const toolkits = [
-  {
-    name: 'Product Manager',
-    desc: 'PRDs, user stories, prioritization, stakeholder updates.',
-    longDesc: 'From raw idea to sprint-ready backlog. 10 workflows covering discovery, definition, execution, and alignment.',
-    tools: 10,
-    price: '$79',
-    icon: '⚡',
-    iconBg: 'bg-blue-50',
-    priceColor: 'text-blue-600',
-    link: '/toolkit/pm',
-    industry: 'Tech',
-    badge: 'Most popular',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Legal',
-    desc: 'Contract review, NDA drafting, GDPR, due diligence.',
-    longDesc: 'Review faster, draft smarter. 10 workflows for lawyers, paralegals, and compliance officers.',
-    tools: 10,
-    price: '$129',
-    icon: '⚖️',
-    iconBg: 'bg-green-50',
-    priceColor: 'text-green-700',
-    link: '/toolkit/legal',
-    industry: 'Legal',
-    badge: 'Highest value',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Recruiting',
-    desc: 'Job descriptions, interviews, scorecards, offer letters.',
-    longDesc: 'Hire the right people in half the time. 10 workflows covering the full hiring lifecycle.',
-    tools: 10,
-    price: '$69',
-    icon: '👥',
-    iconBg: 'bg-amber-50',
-    priceColor: 'text-amber-600',
-    link: '/toolkit/recruiting',
-    industry: 'HR',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Finance',
-    desc: 'Report analysis, investor memos, board narratives.',
-    longDesc: 'Analyze faster, communicate clearer. 10 workflows for CFOs, analysts, and finance teams.',
-    tools: 10,
-    price: '$99',
-    icon: '📊',
-    iconBg: 'bg-red-50',
-    priceColor: 'text-red-600',
-    link: '/toolkit/finance',
-    industry: 'Finance',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Healthcare',
-    desc: 'Clinical notes, patient comms, medical literature.',
-    longDesc: 'Less admin, more care. 10 workflows for clinicians, health tech PMs, and medical writers.',
-    tools: 10,
-    price: '$99',
-    icon: '🏥',
-    iconBg: 'bg-purple-50',
-    priceColor: 'text-purple-600',
-    link: '/toolkit/healthcare',
-    industry: 'Healthcare',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Executive',
-    desc: 'Board decks, crisis comms, all-hands speeches.',
-    longDesc: 'Lead clearly, communicate at the speed of thought. 10 workflows for C-suite and senior leaders.',
-    tools: 10,
-    price: '$149',
-    icon: '🎯',
-    iconBg: 'bg-teal-50',
-    priceColor: 'text-teal-600',
-    link: '/toolkit/executive',
-    industry: 'Leadership',
-    badge: 'Premium',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Sales',
-    desc: 'Cold emails, proposals, objection handling, negotiation.',
-    longDesc: 'Close more deals in less time. 10 workflows covering the full sales cycle.',
-    tools: 10,
-    price: '$79',
-    icon: '💼',
-    iconBg: 'bg-orange-50',
-    priceColor: 'text-orange-600',
-    link: '/toolkit/sales',
-    industry: 'Sales',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Marketing',
-    desc: 'Campaign briefs, content strategy, email sequences, ads.',
-    longDesc: 'Attract the right customers, convert them faster. 10 workflows for marketers and growth teams.',
-    tools: 10,
-    price: '$79',
-    icon: '📣',
-    iconBg: 'bg-pink-50',
-    priceColor: 'text-pink-600',
-    link: '/toolkit/marketing',
-    industry: 'Marketing',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Education',
-    desc: 'Lesson plans, assessments, parent comms, report comments.',
-    longDesc: 'Less admin, more teaching. 10 workflows for teachers and educators.',
-    tools: 10,
-    price: '$59',
-    icon: '📚',
-    iconBg: 'bg-yellow-50',
-    priceColor: 'text-yellow-600',
-    link: '/toolkit/education',
-    industry: 'Education',
-    badge: 'Best value',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Consulting',
-    desc: 'Proposals, SOWs, client updates, findings reports.',
-    longDesc: 'Win more projects, deliver with confidence. 10 workflows for consultants and freelancers.',
-    tools: 10,
-    price: '$99',
-    icon: '🔍',
-    iconBg: 'bg-slate-50',
-    priceColor: 'text-slate-600',
-    link: '/toolkit/consulting',
-    industry: 'Consulting',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Startup',
-    desc: 'Pitch decks, investor updates, GTM strategy, OKRs.',
-    longDesc: 'Build faster, raise smarter. 10 workflows for founders at every stage.',
-    tools: 10,
-    price: '$99',
-    icon: '🚀',
-    iconBg: 'bg-violet-50',
-    priceColor: 'text-violet-600',
-    link: '/toolkit/startup',
-    industry: 'Startup',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
-  {
-    name: 'Real Estate',
-    desc: 'Listings, valuations, market analysis, investment analysis.',
-    longDesc: 'List faster, sell better. 10 workflows for estate agents and property professionals.',
-    tools: 10,
-    price: '$79',
-    icon: '🏠',
-    iconBg: 'bg-emerald-50',
-    priceColor: 'text-emerald-600',
-    link: '/toolkit/realestate',
-    industry: 'Real Estate',
-    badge: '',
-    buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout',
-  },
+  { name: 'Product Manager', desc: 'PRDs, user stories, prioritization, stakeholder updates.', longDesc: 'From raw idea to sprint-ready backlog. 10 workflows covering discovery, definition, execution, and alignment.', tools: 10, price: '$79', icon: '⚡', iconBg: 'bg-blue-50', priceColor: 'text-blue-600', link: '/toolkit/pm', industry: 'Tech', badge: 'Most popular', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/3de8096f-6512-4c82-a72d-06f396c8bb37' },
+  { name: 'Legal', desc: 'Contract review, NDA drafting, GDPR, due diligence.', longDesc: 'Review faster, draft smarter. 10 workflows for lawyers, paralegals, and compliance officers.', tools: 10, price: '$129', icon: '⚖️', iconBg: 'bg-green-50', priceColor: 'text-green-700', link: '/toolkit/legal', industry: 'Legal', badge: 'Highest value', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/1a53e01f-79ff-49ea-9ef4-6685877b219e' },
+  { name: 'Recruiting', desc: 'Job descriptions, interviews, scorecards, offer letters.', longDesc: 'Hire the right people in half the time. 10 workflows covering the full hiring lifecycle.', tools: 10, price: '$69', icon: '👥', iconBg: 'bg-amber-50', priceColor: 'text-amber-600', link: '/toolkit/recruiting', industry: 'HR', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/9b11bbe5-79cb-4597-82ad-8328cbe166c1' },
+  { name: 'Finance', desc: 'Report analysis, investor memos, board narratives.', longDesc: 'Analyze faster, communicate clearer. 10 workflows for CFOs, analysts, and finance teams.', tools: 10, price: '$99', icon: '📊', iconBg: 'bg-red-50', priceColor: 'text-red-600', link: '/toolkit/finance', industry: 'Finance', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/863a0977-107e-464d-9039-a41bc89d5968' },
+  { name: 'Healthcare', desc: 'Clinical notes, patient comms, medical literature.', longDesc: 'Less admin, more care. 10 workflows for clinicians, health tech PMs, and medical writers.', tools: 10, price: '$99', icon: '🏥', iconBg: 'bg-purple-50', priceColor: 'text-purple-600', link: '/toolkit/healthcare', industry: 'Healthcare', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/e5533ac5-a283-4ad4-9ab2-8ab1e329ea01' },
+  { name: 'Executive', desc: 'Board decks, crisis comms, all-hands speeches.', longDesc: 'Lead clearly, communicate at the speed of thought. 10 workflows for C-suite and senior leaders.', tools: 10, price: '$149', icon: '🎯', iconBg: 'bg-teal-50', priceColor: 'text-teal-600', link: '/toolkit/executive', industry: 'Leadership', badge: 'Premium', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/451c1afc-6c19-4734-adc7-ab1397b81218' },
+  { name: 'Sales', desc: 'Cold emails, proposals, objection handling, negotiation.', longDesc: 'Close more deals in less time. 10 workflows covering the full sales cycle.', tools: 10, price: '$79', icon: '💼', iconBg: 'bg-orange-50', priceColor: 'text-orange-600', link: '/toolkit/sales', industry: 'Sales', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/c3cba603-01f3-4bd1-b5b4-41f89b5d454e' },
+  { name: 'Marketing', desc: 'Campaign briefs, content strategy, email sequences, ads.', longDesc: 'Attract the right customers, convert them faster. 10 workflows for marketers and growth teams.', tools: 10, price: '$79', icon: '📣', iconBg: 'bg-pink-50', priceColor: 'text-pink-600', link: '/toolkit/marketing', industry: 'Marketing', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/0e8831f1-46ca-455d-8429-1ffeef1e560a' },
+  { name: 'Education', desc: 'Lesson plans, assessments, parent comms, report comments.', longDesc: 'Less admin, more teaching. 10 workflows for teachers and educators.', tools: 10, price: '$59', icon: '📚', iconBg: 'bg-yellow-50', priceColor: 'text-yellow-600', link: '/toolkit/education', industry: 'Education', badge: 'Best value', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/ab3ce3e4-3b8c-4a01-9fd5-fbaf76af9a74' },
+  { name: 'Consulting', desc: 'Proposals, SOWs, client updates, findings reports.', longDesc: 'Win more projects, deliver with confidence. 10 workflows for consultants and freelancers.', tools: 10, price: '$99', icon: '🔍', iconBg: 'bg-slate-50', priceColor: 'text-slate-600', link: '/toolkit/consulting', industry: 'Consulting', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/34df1958-355f-4ad4-bba1-027450f46424' },
+  { name: 'Startup', desc: 'Pitch decks, investor updates, GTM strategy, OKRs.', longDesc: 'Build faster, raise smarter. 10 workflows for founders at every stage.', tools: 10, price: '$99', icon: '🚀', iconBg: 'bg-violet-50', priceColor: 'text-violet-600', link: '/toolkit/startup', industry: 'Startup', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/94a22882-854b-4aa8-8506-002871cdfeb7' },
+  { name: 'Real Estate', desc: 'Listings, valuations, market analysis, investment analysis.', longDesc: 'List faster, sell better. 10 workflows for estate agents and property professionals.', tools: 10, price: '$79', icon: '🏠', iconBg: 'bg-emerald-50', priceColor: 'text-emerald-600', link: '/toolkit/realestate', industry: 'Real Estate', badge: '', buyUrl: 'https://taskflowai.lemonsqueezy.com/checkout/buy/b1786112-aaed-4f9f-a0d4-5619787832b6' },
 ]
 
 const industries = ['All', 'Tech', 'Legal', 'HR', 'Finance', 'Healthcare', 'Leadership', 'Sales', 'Marketing', 'Education', 'Consulting', 'Startup', 'Real Estate']
-
 const priceRanges = ['All prices', 'Under $80', '$80–$100', 'Over $100']
-
-function ToolkitSearch() {
-  const [query, setQuery] = useState('')
-
-  const filtered = toolkits.filter(t =>
-    t.name.toLowerCase().includes(query.toLowerCase()) ||
-    t.desc.toLowerCase().includes(query.toLowerCase())
-  )
-
-  return (
-    <div>
-      <div className="relative max-w-sm mx-auto mb-8">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
-        <input
-          type="text"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Search toolkits — e.g. contracts, cold email, lesson plan..."
-          className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 bg-white"
-        />
-        {query && (
-          <button
-            onClick={() => setQuery('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs"
-          >
-            ✕
-          </button>
-        )}
-      </div>
-
-      {filtered.length === 0 ? (
-        <div className="text-center py-8">
-          <p className="text-sm text-gray-400">No toolkits found for "{query}"</p>
-          <button onClick={() => setQuery('')} className="text-xs text-blue-600 mt-2">Clear search</button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {filtered.map((t) => (
-            <div key={t.name} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors flex flex-col">
-              <a href={t.link} className="flex-1 block">
-                <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 text-lg ${t.iconBg}`}>
-                  {t.icon}
-                </div>
-                <div className="text-sm font-medium text-gray-900 mb-1">{t.name}</div>
-                <div className="text-xs text-gray-500 leading-relaxed mb-2">{t.desc}</div>
-                <div className="text-xs text-gray-400">{t.tools} tools</div>
-              </a>
-              <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
-                <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
-                <a
-                  href={t.buyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                >
-                  Buy
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {query && filtered.length > 0 && (
-        <p className="text-xs text-gray-400 text-center mt-4">
-          {filtered.length} toolkit{filtered.length !== 1 ? 's' : ''} found
-        </p>
-      )}
-    </div>
-  )
-}
 
 export default function ToolkitsPage() {
   const [search, setSearch] = useState('')
@@ -270,8 +42,7 @@ export default function ToolkitsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-
-       <Navbar active="toolkits" />
+      <Navbar active="toolkits" />
 
       <div className="max-w-5xl mx-auto px-6 py-12">
 
@@ -281,23 +52,24 @@ export default function ToolkitsPage() {
           <p className="text-base text-gray-500">12 toolkits, 120 workflows. Built for professionals who have real work to do.</p>
         </div>
 
-        {/* Secțiunea cu butonul de "Get all access" adăugată conform cerinței */}
-        <div className="mb-12 p-6 border border-gray-200 rounded-xl bg-gray-50 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Get All Access banner */}
+        <div className="mb-8 p-5 border border-blue-100 rounded-xl bg-blue-50 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-medium text-gray-900 mb-1">Get All Access Pass</h2>
-            <p className="text-xs text-gray-500">Unlock all 12 toolkits and future updates instantly.</p>
+            <h2 className="text-base font-medium text-gray-900 mb-1">Get All Access — $299</h2>
+            <p className="text-xs text-gray-500">Unlock all 12 toolkits and 120 workflows. One-time payment, lifetime access.</p>
           </div>
-          <div className="w-full md:w-auto">
-            <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto block text-center text-sm px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
-              Get all access
-            </a>
-          </div>
+          
+            href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
+          >
+            Get all access
+          </a>
         </div>
 
         {/* Filters */}
         <div className="flex flex-col gap-4 mb-8">
-
-          {/* Search */}
           <div className="relative max-w-md">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
             <input
@@ -312,59 +84,41 @@ export default function ToolkitsPage() {
             )}
           </div>
 
-          {/* Industry filter */}
           <div className="flex flex-wrap gap-2">
             {industries.map(i => (
               <button
                 key={i}
                 onClick={() => setIndustry(i)}
-                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-                  industry === i
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                }`}
+                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${industry === i ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'}`}
               >
                 {i}
               </button>
             ))}
           </div>
 
-          {/* Price filter + view toggle */}
           <div className="flex justify-between items-center">
             <div className="flex gap-2">
               {priceRanges.map(p => (
                 <button
                   key={p}
                   onClick={() => setPriceRange(p)}
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
-                    priceRange === p
-                      ? 'bg-blue-50 text-blue-700 border-blue-200'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-                  }`}
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${priceRange === p ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'}`}
                 >
                   {p}
                 </button>
               ))}
             </div>
             <div className="flex gap-1">
-              <button
-                onClick={() => setView('grid')}
-                className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${view === 'grid' ? 'bg-gray-100 border-gray-300' : 'bg-white border-gray-200'}`}
-              >
+              <button onClick={() => setView('grid')} className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${view === 'grid' ? 'bg-gray-100 border-gray-300' : 'bg-white border-gray-200'}`}>
                 ⊞ Grid
               </button>
-              <button
-                onClick={() => setView('list')}
-                className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${view === 'list' ? 'bg-gray-100 border-gray-300' : 'bg-white border-gray-200'}`}
-              >
+              <button onClick={() => setView('list')} className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${view === 'list' ? 'bg-gray-100 border-gray-300' : 'bg-white border-gray-200'}`}>
                 ☰ List
               </button>
             </div>
           </div>
-
         </div>
 
-        {/* Results count */}
         <p className="text-xs text-gray-400 mb-4">
           {filtered.length} toolkit{filtered.length !== 1 ? 's' : ''} {search || industry !== 'All' || priceRange !== 'All prices' ? 'found' : 'available'}
         </p>
@@ -388,17 +142,18 @@ export default function ToolkitsPage() {
                     </div>
                     <h2 className="text-sm font-medium text-gray-900 mb-1">{t.name}</h2>
                     <p className="text-xs text-gray-500 leading-relaxed mb-3">{t.longDesc}</p>
+                    <div className="text-xs text-gray-400">{t.tools} workflows</div>
                   </a>
                 </div>
-                <div className="flex items-center justify-between pt-3 border-t border-gray-50 mt-2">
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">
                   <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
-                  <a
+                  
                     href={t.buyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
                   >
-                    Buy
+                    Buy now
                   </a>
                 </div>
               </div>
@@ -410,7 +165,7 @@ export default function ToolkitsPage() {
         {view === 'list' && (
           <div className="space-y-3">
             {filtered.map(t => (
-              <div key={t.name} className="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all">
+              <div key={t.name} className="flex items-center gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all">
                 <a href={t.link} className="flex items-center gap-4 flex-1 min-w-0">
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0 ${t.iconBg}`}>
                     {t.icon}
@@ -423,12 +178,12 @@ export default function ToolkitsPage() {
                     <p className="text-xs text-gray-500 truncate">{t.desc}</p>
                   </div>
                 </a>
-                <div className="flex items-center gap-4 flex-shrink-0">
+                <div className="flex items-center gap-3 flex-shrink-0">
                   <div className="text-right">
                     <div className={`text-sm font-medium ${t.priceColor}`}>{t.price}</div>
                     <div className="text-xs text-gray-400">{t.tools} workflows</div>
                   </div>
-                  <a
+                  
                     href={t.buyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -444,18 +199,12 @@ export default function ToolkitsPage() {
 
         {filtered.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-sm text-gray-400 mb-2">No toolkits found for "{search}"</p>
+            <p className="text-sm text-gray-400 mb-2">No toolkits found</p>
             <button onClick={() => { setSearch(''); setIndustry('All'); setPriceRange('All prices') }} className="text-xs text-blue-600">
               Clear all filters
             </button>
           </div>
         )}
-
-        {/* Inserarea funcției ToolkitSearch cerută în instrucțiuni */}
-        <div className="mt-16 pt-12 border-t border-gray-100">
-          <h2 className="text-xl font-medium text-gray-900 mb-6 text-center">Quick Search Component</h2>
-          <ToolkitSearch />
-        </div>
 
       </div>
 
