@@ -143,8 +143,7 @@ export default function ToolkitsPage() {
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">
                   <span className={`text-sm font-medium ${t.priceColor}`}>{t.price}</span>
                   
-                  <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">Buy now</a>
-                  </a>
+                 <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">Buy now</a>
                 </div>
               </div>
             ))}
