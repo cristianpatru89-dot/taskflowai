@@ -52,21 +52,16 @@ export default function ToolkitsPage() {
           <p className="text-base text-gray-500">12 toolkits, 120 workflows. Built for professionals who have real work to do.</p>
         </div>
 
-        {/* Get All Access banner */}
-        <div className="mb-8 p-5 border border-blue-100 rounded-xl bg-blue-50 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <h2 className="text-base font-medium text-gray-900 mb-1">Get All Access — $299</h2>
-            <p className="text-xs text-gray-500">Unlock all 12 toolkits and 120 workflows. One-time payment, lifetime access.</p>
-          </div>
-          
-            href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
-          >
-            Get all access
-          </a>
-        </div>
+       {/* Get All Access banner */}
+<div className="mb-8 p-5 border border-blue-100 rounded-xl bg-blue-50 flex flex-col md:flex-row items-center justify-between gap-4">
+  <div>
+    <h2 className="text-base font-medium text-gray-900 mb-1">Get All Access — $299</h2>
+    <p className="text-xs text-gray-500">Unlock all 12 toolkits and 120 workflows. One-time payment, lifetime access.</p>
+  </div>
+  <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="text-sm px-5 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors whitespace-nowrap">
+    Get all access
+  </a>
+</div>
 
         {/* Filters */}
         <div className="flex flex-col gap-4 mb-8">
