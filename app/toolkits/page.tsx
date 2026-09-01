@@ -150,34 +150,34 @@ export default function ToolkitsPage() {
           </div>
         )}
 
-        {/* List view */}
-        {view === 'list' && (
-          <div className="space-y-3">
-            {filtered.map(t => (
-              <div key={t.name} className="flex items-center gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all">
-                <a href={t.link} className="flex items-center gap-4 flex-1 min-w-0">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0 ${t.iconBg}`}>
-                    {t.icon}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <h2 className="text-sm font-medium text-gray-900">{t.name}</h2>
-                      {t.badge && <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-500 border border-gray-100 rounded-full">{t.badge}</span>}
-                    </div>
-                    <p className="text-xs text-gray-500 truncate">{t.desc}</p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-3 flex-shrink-0">
-                  <div className="text-right">
-                    <div className={`text-sm font-medium ${t.priceColor}`}>{t.price}</div>
-                    <div className="text-xs text-gray-400">{t.tools} workflows</div>
-                  </div>
-                  
-                   <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">Buy</a>
-              </div>
-            ))}
+       {/* List view */}
+{view === 'list' && (
+  <div className="space-y-3">
+    {filtered.map(t => (
+      <div key={t.name} className="flex items-center gap-4 border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-all">
+        <a href={t.link} className="flex items-center gap-4 flex-1 min-w-0">
+          <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0 ${t.iconBg}`}>
+            {t.icon}
           </div>
-        )}
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 mb-0.5">
+              <h2 className="text-sm font-medium text-gray-900">{t.name}</h2>
+              {t.badge && <span className="text-xs px-2 py-0.5 bg-gray-50 text-gray-500 border border-gray-100 rounded-full">{t.badge}</span>}
+            </div>
+            <p className="text-xs text-gray-500 truncate">{t.desc}</p>
+          </div>
+        </a>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="text-right">
+            <div className={`text-sm font-medium ${t.priceColor}`}>{t.price}</div>
+            <div className="text-xs text-gray-400">{t.tools} workflows</div>
+          </div>
+          <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">Buy</a>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
 
         {filtered.length === 0 && (
           <div className="text-center py-16">
