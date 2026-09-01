@@ -174,8 +174,6 @@ export default function ToolkitsPage() {
                   </div>
                   
                    <a href={t.buyUrl} target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">Buy</a>
-                  </a>
-                </div>
               </div>
             ))}
           </div>
