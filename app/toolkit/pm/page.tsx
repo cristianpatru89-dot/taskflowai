@@ -400,7 +400,7 @@ export default function PMToolkit() {
   const [copied, setCopied] = useState(false)
   const [showMoreAI, setShowMoreAI] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
-
+  const [showUpgrade, setShowUpgrade] = useState(false)
 
   const activeW = workflows.find(w => w.id === activeWorkflow)
 
@@ -479,17 +479,24 @@ export default function PMToolkit() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-          <div className="space-y-3">
-            {filtered.map(w => (
-              <div
-                key={w.id}
-                onClick={() => { setActiveWorkflow(w.id); setGeneratedPrompt(''); setShowMoreAI(false) }}
-                className={`border rounded-xl p-4 cursor-pointer transition-all ${
-                  activeWorkflow === w.id
-                    ? 'border-gray-900 bg-gray-50'
-                    : 'border-gray-100 hover:border-gray-200 bg-white'
-                }`}
-              >
+      <div className="space-y-3">
+  {filtered.map((w, index) => {
+    const isLocked = index >= 3
+    return (
+    <div
+      key={w.id}
+      onClick={() => {
+        if (isLocked) { setShowUpgrade(true); return }
+        setActiveWorkflow(w.id); setGeneratedPrompt(''); setShowMoreAI(false)
+      }}
+      className={`border rounded-xl p-4 cursor-pointer transition-all ${
+        isLocked
+          ? 'border-gray-100 bg-gray-50 opacity-60'
+          : activeWorkflow === w.id
+          ? 'border-gray-900 bg-gray-50'
+          : 'border-gray-100 hover:border-gray-200 bg-white'
+      }`}
+    >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-3">
                     <span className="text-xs font-mono text-gray-300 mt-0.5 w-6 flex-shrink-0">{w.number}</span>
@@ -505,7 +512,7 @@ export default function PMToolkit() {
                   <span className="text-gray-300 flex-shrink-0">→</span>
                 </div>
               </div>
-            ))}
+           )})}
           </div>
 
           <div className="lg:sticky lg:top-6 lg:self-start">
@@ -607,6 +614,29 @@ export default function PMToolkit() {
     {tool.emoji} {tool.name}
   </a>
 ))}
+
+{showUpgrade && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+    <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
+      <div className="text-3xl mb-4">🔒</div>
+      <h2 className="text-xl font-medium text-gray-900 mb-2">Unlock all 10 workflows</h2>
+      <p className="text-sm text-gray-500 mb-6">
+        The first 3 workflows are free. Unlock all 10 with a one-time purchase.
+      </p>
+      <div className="flex flex-col gap-3">
+        <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/3de8096f-6512-4c82-a72d-06f396c8bb37" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors">
+          Unlock PM Toolkit — $79
+        </a>
+        <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
+          Get all 12 toolkits — $299
+        </a>
+        <button onClick={() => setShowUpgrade(false)} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
+          Maybe later
+        </button>
+      </div>
+    </div>
+  </div>
+)}
                         <div className="relative">
                           <button
                             onClick={() => setShowMoreAI(!showMoreAI)}
