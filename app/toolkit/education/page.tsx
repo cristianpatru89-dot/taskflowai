@@ -556,6 +556,7 @@ export default function EducationToolkit() {
   const [generatedPrompt, setGeneratedPrompt] = useState<string>('')
   const [copied, setCopied] = useState(false)
   const [showMoreAI, setShowMoreAI] = useState(false)
+  const [showUpgrade, setShowUpgrade] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
 
   const activeW = workflows.find(w => w.id === activeWorkflow)
@@ -619,12 +620,16 @@ export default function EducationToolkit() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
           <div className="space-y-3">
-            {filtered.map(w => (
+            {filtered.map((w, index) => {
+    const isLocked = index >= 3
+    return (
               <div
                 key={w.id}
                 onClick={() => { setActiveWorkflow(w.id); setGeneratedPrompt('') }}
                 className={`border rounded-xl p-4 cursor-pointer transition-all ${
-                  activeWorkflow === w.id
+                  isLocked
+                    ? 'border-gray-100 bg-gray-50 opacity-60'
+                    : activeWorkflow === w.id
                     ? 'border-gray-900 bg-gray-50'
                     : 'border-gray-100 hover:border-gray-200 bg-white'
                 }`}
@@ -785,6 +790,29 @@ export default function EducationToolkit() {
 
         </div>
       </div>
+
+      {{showUpgrade && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
+            <div className="text-3xl mb-4">🔒</div>
+            <h2 className="text-xl font-medium text-gray-900 mb-2">Unlock all 10 workflows</h2>
+            <p className="text-sm text-gray-500 mb-6">
+              The first 3 workflows are free. Unlock all 10 with a one-time purchase.
+            </p>
+            <div className="flex flex-col gap-3">
+              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/ab3ce3e4-3b8c-4a01-9fd5-fbaf76af9a74" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors">
+                Unlock Education Toolkit — $59
+              </a>
+              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
+                Get all 12 toolkits — $299
+              </a>
+              <button onClick={{() => setShowUpgrade(false)}} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
+                Maybe later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}}
     </div>
   )
-}
+}}
