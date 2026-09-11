@@ -632,7 +632,7 @@ export default function StartupToolkit() {
     return (
               <div
                 key={w.id}
-                onClick={() => { setActiveWorkflow(w.id); setGeneratedPrompt('') }}
+                onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }}
                 className={`border rounded-xl p-4 cursor-pointer transition-all ${
                   isLocked
                     ? 'border-gray-100 bg-gray-50 opacity-60'
