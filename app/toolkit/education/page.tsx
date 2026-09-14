@@ -613,8 +613,7 @@ export default function EducationToolkit() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="space-y-3">
+       <div className="space-y-3">
             {filtered.map((w, index) => {
               const isLocked = index >= 3
               return (

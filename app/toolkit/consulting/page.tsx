@@ -604,7 +604,7 @@ export default function ConsultingToolkit() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-          <div className="space-y-3">
+         <div className="space-y-3">
             {filtered.map((w, index) => {
               const isLocked = index >= 3
               return (
@@ -634,8 +634,9 @@ export default function ConsultingToolkit() {
                     <span className="text-gray-300 flex-shrink-0">→</span>
                   </div>
                 </div>
-     })
-  </div>
+              )
+            })}
+          </div>
 
           <div className="lg:sticky lg:top-6 lg:self-start">
             {!activeWorkflow ? (
