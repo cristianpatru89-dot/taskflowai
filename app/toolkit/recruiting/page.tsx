@@ -520,7 +520,8 @@ export default function RecruitingToolkit() {
                   <span className="text-gray-300 flex-shrink-0">→</span>
                 </div>
               </div>
-            ))}
+          )
+            })}
           </div>
 
           <div className="lg:sticky lg:top-6 lg:self-start">
