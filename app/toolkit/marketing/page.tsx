@@ -579,7 +579,7 @@ export default function MarketingToolkit() {
               return (
                 <div
                   key={w.id}
-                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }}
+                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }
                   className={`border rounded-xl p-4 cursor-pointer transition-all ${
                     isLocked
                       ? 'border-gray-100 bg-gray-50 opacity-60'
@@ -745,7 +745,7 @@ export default function MarketingToolkit() {
         </div>
       </div>
 
-      {{showUpgrade && (
+      {showUpgrade && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
           <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
             <div className="text-3xl mb-4">🔒</div>
