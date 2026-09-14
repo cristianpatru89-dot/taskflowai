@@ -1,7 +1,6 @@
 'use client'
 
 import Navbar from '@/components/navbar';
-
 import { useState } from 'react'
 
 const workflows = [
@@ -555,7 +554,6 @@ export default function EducationToolkit() {
   const [inputs, setInputs] = useState<Record<string, Record<string, string>>>({})
   const [generatedPrompt, setGeneratedPrompt] = useState<string>('')
   const [copied, setCopied] = useState(false)
-  const [showMoreAI, setShowMoreAI] = useState(false)
   const [showUpgrade, setShowUpgrade] = useState(false)
   const [activePhase, setActivePhase] = useState('All')
 
@@ -586,11 +584,9 @@ export default function EducationToolkit() {
 
   return (
     <div className="min-h-screen bg-white">
-
-       <Navbar active="toolkits" />
+      <Navbar active="toolkits" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-
         <div className="mb-8">
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Education Toolkit</p>
           <h1 className="text-3xl font-medium text-gray-900 mb-3">
@@ -618,9 +614,7 @@ export default function EducationToolkit() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-
           <div className="space-y-3">
-         <div className="space-y-3">
             {filtered.map((w, index) => {
               const isLocked = index >= 3
               return (
@@ -662,39 +656,38 @@ export default function EducationToolkit() {
               </div>
             ) : activeW ? (
               <div className="border border-gray-100 rounded-xl overflow-hidden">
-
                 <div className="px-5 py-4 border-b border-gray-100">
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`text-xs px-2 py-0.5 rounded-full ${activeW.phaseColor}`}>{activeW.phase}</span>
                     <span className="text-xs text-gray-400">{activeW.context}</span>
                   </div>
-                  <h2 className="text-base font-medium text-gray-900">{activeW.name}</h2>
-                  <p className="text-xs text-gray-500 mt-1">{activeW.description}</p>
+                  <h2 className="text-lg font-medium text-gray-900">{activeW.name}</h2>
+                  <p className="text-xs text-gray-500 mt-0.5">{activeW.description}</p>
                 </div>
 
-                <div className="px-5 py-4 space-y-4 border-b border-gray-100">
+                <div className="p-5 space-y-4 max-h-[60vh] overflow-y-auto">
                   {activeW.inputs.map(input => (
                     <div key={input.id}>
-                      <label className="block text-xs font-medium text-gray-700 mb-1.5">
+                      <label className="block text-xs font-medium text-gray-700 mb-1">
                         {input.label}
                       </label>
                       {input.type === 'textarea' ? (
                         <textarea
+                          rows={3}
                           value={inputs[activeW.id]?.[input.id] || ''}
                           onChange={e => handleInput(activeW.id, input.id, e.target.value)}
                           placeholder={input.placeholder}
-                          rows={3}
-                          className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 placeholder-gray-300 focus:outline-none focus:border-gray-400 resize-none"
+                          className="w-full text-xs border border-gray-200 rounded-lg p-2.5 focus:outline-none focus:border-gray-900"
                         />
                       ) : input.type === 'select' ? (
                         <select
                           value={inputs[activeW.id]?.[input.id] || ''}
                           onChange={e => handleInput(activeW.id, input.id, e.target.value)}
-                          className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-400 bg-white"
+                          className="w-full text-xs border border-gray-200 rounded-lg p-2.5 bg-white focus:outline-none focus:border-gray-900"
                         >
                           <option value="">Select...</option>
-                          {input.options?.map(o => (
-                            <option key={o} value={o}>{o}</option>
+                          {input.options?.map(opt => (
+                            <option key={opt} value={opt}>{opt}</option>
                           ))}
                         </select>
                       ) : (
@@ -703,7 +696,7 @@ export default function EducationToolkit() {
                           value={inputs[activeW.id]?.[input.id] || ''}
                           onChange={e => handleInput(activeW.id, input.id, e.target.value)}
                           placeholder={input.placeholder}
-                          className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 placeholder-gray-300 focus:outline-none focus:border-gray-400"
+                          className="w-full text-xs border border-gray-200 rounded-lg p-2.5 focus:outline-none focus:border-gray-900"
                         />
                       )}
                     </div>
@@ -711,110 +704,55 @@ export default function EducationToolkit() {
 
                   <button
                     onClick={handleGenerate}
-                    className="w-full py-2.5 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+                    className="w-full bg-gray-900 text-white text-xs font-medium py-2.5 rounded-lg hover:bg-gray-800 transition-colors"
                   >
-                    Generate prompt
+                    Generate Prompt
                   </button>
+
+                  {generatedPrompt && (
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-gray-700">Generated Prompt</span>
+                        <button
+                          onClick={handleCopy}
+                          className="text-xs text-gray-500 hover:text-gray-900 font-medium"
+                        >
+                          {copied ? 'Copied!' : 'Copy prompt'}
+                        </button>
+                      </div>
+                      <pre className="text-xs bg-gray-50 border border-gray-100 rounded-lg p-3 whitespace-pre-wrap font-mono text-gray-700 max-h-60 overflow-y-auto">
+                        {generatedPrompt}
+                      </pre>
+                    </div>
+                  )}
                 </div>
-
-                {generatedPrompt && (
-  <div className="px-5 py-4">
-    <div className="flex justify-between items-center mb-2">
-      <p className="text-xs font-medium text-gray-700">Your prompt</p>
-      <button
-        onClick={handleCopy}
-        className={`text-xs px-3 py-1 rounded-lg border transition-colors ${
-          copied
-            ? 'bg-green-50 text-green-600 border-green-200'
-            : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
-        }`}
-      >
-        {copied ? '✓ Copied' : 'Copy'}
-      </button>
-    </div>
-    <div className="bg-gray-50 rounded-lg p-3 max-h-48 overflow-y-auto mb-4">
-      <pre className="text-xs text-gray-700 whitespace-pre-wrap font-mono leading-relaxed">
-        {generatedPrompt}
-      </pre>
-    </div>
-    <div className="border-t border-gray-100 pt-4">
-      <p className="text-xs text-gray-500 mb-2">Open in your AI tool:</p>
-      <div className="flex flex-wrap gap-2">
-        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-green-50 text-green-700 border-green-100 hover:opacity-80">
-          🤖 ChatGPT
-        </a>
-        <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-orange-50 text-orange-700 border-orange-100 hover:opacity-80">
-          ⚡ Claude
-        </a>
-        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-blue-50 text-blue-700 border-blue-100 hover:opacity-80">
-          ✨ Gemini
-        </a>
-        <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-indigo-50 text-indigo-700 border-indigo-100 hover:opacity-80">
-          🪟 Copilot
-        </a>
-        <div className="relative">
-          <button
-            onClick={() => setShowMoreAI(!showMoreAI)}
-            className="flex items-center gap-1 text-xs px-3 py-1.5 bg-gray-50 text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-100"
-          >
-            More {showMoreAI ? '▲' : '▾'}
-          </button>
-          {showMoreAI && (
-            <div className="absolute bottom-full left-0 mb-1 bg-white border border-gray-100 rounded-xl shadow-lg p-2 z-10 w-44">
-              {[
-                { name: 'Perplexity', url: 'https://perplexity.ai', emoji: '🔍' },
-                { name: 'Mistral', url: 'https://chat.mistral.ai', emoji: '🌊' },
-                { name: 'Grok', url: 'https://grok.com', emoji: 'X' },
-                { name: 'DeepSeek', url: 'https://chat.deepseek.com', emoji: '🐳' },
-                { name: 'Poe', url: 'https://poe.com', emoji: '💬' },
-                { name: 'You.com', url: 'https://you.com', emoji: '🔎' },
-                { name: 'HuggingChat', url: 'https://huggingface.co/chat', emoji: '🤗' },
-                { name: 'Cohere', url: 'https://coral.cohere.com', emoji: '🪸' },
-              ].map(tool => (
-                <a key={tool.name} href={tool.url} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 rounded-lg"
-                  onClick={() => setShowMoreAI(false)}>
-                  {tool.emoji} {tool.name}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      <p className="text-xs text-gray-400 mt-2">Copy your prompt first, then open the AI tool and paste.</p>
-    </div>
-  </div>
-)}
-
               </div>
             ) : null}
           </div>
-
         </div>
       </div>
 
       {showUpgrade && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
-            <div className="text-3xl mb-4">🔒</div>
-            <h2 className="text-xl font-medium text-gray-900 mb-2">Unlock all 10 workflows</h2>
-            <p className="text-sm text-gray-500 mb-6">
-              The first 3 workflows are free. Unlock all 10 with a one-time purchase.
-            </p>
-            <div className="flex flex-col gap-3">
-              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/ab3ce3e4-3b8c-4a01-9fd5-fbaf76af9a74" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors">
-                Unlock Education Toolkit — $59
-              </a>
-              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
-                Get all 12 toolkits — $299
-              </a>
-              <button onClick={{() => setShowUpgrade(false)}} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
-                Maybe later
-              </button>
-            </div>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-xl">
+            <div className="text-2xl mb-2">🔒</div>
+            <h3 className="text-sm font-medium text-gray-900 mb-1">Unlock All Toolkits</h3>
+            <p className="text-xs text-gray-500 mb-4">Get access to all workflows and future updates.</p>
+            <a
+              href="https://buy.stripe.com/your_link"
+              className="block w-full bg-gray-900 text-white text-xs font-medium py-2.5 rounded-lg mb-2"
+            >
+              Get all toolkits — $299
+            </a>
+            <button
+              onClick={() => setShowUpgrade(false)}
+              className="text-xs text-gray-400 hover:text-gray-600"
+            >
+              Maybe later
+            </button>
           </div>
         </div>
-      )}}
+      )}
     </div>
   )
-}}
+}
