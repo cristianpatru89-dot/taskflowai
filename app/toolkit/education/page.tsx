@@ -613,40 +613,39 @@ export default function EducationToolkit() {
           ))}
         </div>
 
-       <div className="space-y-3">
-            {filtered.map((w, index) => {
-              const isLocked = index >= 3
-              return (
-                <div
-                  key={w.id}
-                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }}
-                  className={`border rounded-xl p-4 cursor-pointer transition-all ${
-                    isLocked
-                      ? 'border-gray-100 bg-gray-50 opacity-60'
-                      : activeWorkflow === w.id
-                      ? 'border-gray-900 bg-gray-50'
-                      : 'border-gray-100 hover:border-gray-200 bg-white'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-start gap-3">
-                      <span className="text-xs font-mono text-gray-300 mt-0.5 w-6 flex-shrink-0">{w.number}</span>
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <p className="text-sm font-medium text-gray-900">{w.name}</p>
-                          <span className={`text-xs px-2 py-0.5 rounded-full ${w.phaseColor}`}>{w.phase}</span>
-                        </div>
-                        <p className="text-xs text-gray-500">{w.tagline}</p>
-                        <p className="text-xs text-gray-400 mt-1 italic">{w.context}</p>
-                      </div>
-                    </div>
-                    <span className="text-gray-300 flex-shrink-0">→</span>
-                  </div>
-                </div>
-              )
-            })}
+      <div className="space-y-3">
+  {filtered.map((w, index) => {
+    const isLocked = index >= 3;
+    return (
+      <div
+        key={w.id}
+        onClick={() => { if (isLocked) { setShowUpgrade(true); return; } setActiveWorkflow(w.id); setGeneratedPrompt(''); }}
+        className={`border rounded-xl p-4 cursor-pointer transition-all ${
+          isLocked
+            ? 'border-gray-100 bg-gray-50 opacity-60'
+            : activeWorkflow === w.id
+            ? 'border-gray-900 bg-gray-50'
+            : 'border-gray-100 hover:border-gray-200 bg-white'
+        }`}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <span className="text-xs font-mono text-gray-300 mt-0.5 w-6 flex-shrink-0">{w.number}</span>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <p className="text-sm font-medium text-gray-900">{w.name}</p>
+                <span className={`text-xs px-2 py-0.5 rounded-full ${w.phaseColor}`}>{w.phase}</span>
+              </div>
+              <p className="text-xs text-gray-500">{w.tagline}</p>
+              <p className="text-xs text-gray-400 mt-1 italic">{w.context}</p>
+            </div>
           </div>
-
+          <span className="text-gray-300 flex-shrink-0">→</span>
+        </div>
+      </div>
+    );
+  })}
+</div>
           <div className="lg:sticky lg:top-6 lg:self-start">
             {!activeWorkflow ? (
               <div className="border border-dashed border-gray-200 rounded-xl p-8 text-center">
