@@ -1,7 +1,6 @@
 'use client'
 
 import Navbar from '@/components/navbar';
-
 import { useState } from 'react'
 
 const workflows = [
@@ -276,7 +275,7 @@ Timeline: ${inputs.timeline || '[timeline]'}
 
 Generate a structured hiring plan:
 
-1. CAPABILITY GAP ANALYSIS: What skills and capacity are missing to achieve "${inputs.team_goal || '[goal]'}" given the current team of "${inputs.current_team || '[team]'}"?
+1. CAPABILITY GAP ANALYSIS: What skills and capacity are missing to achieve "${inputs.team_goal || '[goal]'}" given the current team of "${inputs.current_team || '[current team]'}"?
 
 2. PRIORITIZED ROLES TO HIRE (ranked by impact):
    For each role:
@@ -496,7 +495,7 @@ export default function RecruitingToolkit() {
               return (
                 <div
                   key={w.id}
-                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }
+                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }}
                   className={`border rounded-xl p-4 cursor-pointer transition-all ${
                     isLocked
                       ? 'border-gray-100 bg-gray-50 opacity-60'
@@ -678,13 +677,13 @@ export default function RecruitingToolkit() {
               <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
                 Get all 12 toolkits — $299
               </a>
-              <button onClick={{() => setShowUpgrade(false)}} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
+              <button onClick={() => setShowUpgrade(false)} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
                 Maybe later
               </button>
             </div>
           </div>
         </div>
-      )}}
+      )}
     </div>
   )
-}}
+}

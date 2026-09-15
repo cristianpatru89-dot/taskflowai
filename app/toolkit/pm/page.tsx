@@ -1,9 +1,6 @@
 'use client'
 
 import Navbar from '@/components/navbar';
-
-// Note: metadata must be in a separate file for client components
-
 import { useState } from 'react'
 
 const workflows = [
@@ -393,6 +390,24 @@ Total session time: 45–60 minutes.`
 
 const phases = ['All', 'Discovery', 'Definition', 'Execution', 'Alignment']
 
+const mainAITools = [
+  { name: 'ChatGPT', url: 'https://chat.openai.com', emoji: '🤖', bg: 'bg-green-50 text-green-700 border-green-100' },
+  { name: 'Claude', url: 'https://claude.ai', emoji: '⚡', bg: 'bg-orange-50 text-orange-700 border-orange-100' },
+  { name: 'Gemini', url: 'https://gemini.google.com', emoji: '✨', bg: 'bg-blue-50 text-blue-700 border-blue-100' },
+  { name: 'Copilot', url: 'https://copilot.microsoft.com', emoji: '🪟', bg: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
+]
+
+const moreAITools = [
+  { name: 'Perplexity', url: 'https://perplexity.ai', emoji: '🔍' },
+  { name: 'Mistral', url: 'https://chat.mistral.ai', emoji: '🌊' },
+  { name: 'Grok', url: 'https://grok.com', emoji: '✖️' },
+  { name: 'DeepSeek', url: 'https://chat.deepseek.com', emoji: '🐳' },
+  { name: 'Poe', url: 'https://poe.com', emoji: '💬' },
+  { name: 'You.com', url: 'https://you.com', emoji: '🔎' },
+  { name: 'HuggingChat', url: 'https://huggingface.co/chat', emoji: '🤗' },
+  { name: 'Cohere', url: 'https://coral.cohere.com', emoji: '🪸' },
+]
+
 export default function PMToolkit() {
   const [activeWorkflow, setActiveWorkflow] = useState<string | null>(null)
   const [inputs, setInputs] = useState<Record<string, Record<string, string>>>({})
@@ -428,31 +443,11 @@ export default function PMToolkit() {
 
   const filtered = activePhase === 'All' ? workflows : workflows.filter(w => w.phase === activePhase)
 
-  const mainAITools = [
-    { name: 'ChatGPT', url: 'https://chat.openai.com', emoji: '🤖', bg: 'bg-green-50 text-green-700 border-green-100' },
-    { name: 'Claude', url: 'https://claude.ai', emoji: '⚡', bg: 'bg-orange-50 text-orange-700 border-orange-100' },
-    { name: 'Gemini', url: 'https://gemini.google.com', emoji: '✨', bg: 'bg-blue-50 text-blue-700 border-blue-100' },
-    { name: 'Copilot', url: 'https://copilot.microsoft.com', emoji: '🪟', bg: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
-  ]
-
-  const moreAITools = [
-    { name: 'Perplexity', url: 'https://perplexity.ai', emoji: '🔍' },
-    { name: 'Mistral', url: 'https://chat.mistral.ai', emoji: '🌊' },
-    { name: 'Grok', url: 'https://grok.com', emoji: '✖️' },
-    { name: 'DeepSeek', url: 'https://chat.deepseek.com', emoji: '🐳' },
-    { name: 'Poe', url: 'https://poe.com', emoji: '💬' },
-    { name: 'You.com', url: 'https://you.com', emoji: '🔎' },
-    { name: 'HuggingChat', url: 'https://huggingface.co/chat', emoji: '🤗' },
-    { name: 'Cohere', url: 'https://coral.cohere.com', emoji: '🪸' },
-  ]
-
   return (
     <div className="min-h-screen bg-white">
-
-    <Navbar active="toolkits" />
+      <Navbar active="toolkits" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-
         <div className="mb-8">
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Product Manager Toolkit</p>
           <h1 className="text-3xl font-medium text-gray-900 mb-3">From raw idea to shipped product</h1>
@@ -478,14 +473,20 @@ export default function PMToolkit() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-
-    <div className="space-y-3">
+          <div className="space-y-3">
             {filtered.map((w, index) => {
               const isLocked = index >= 3
               return (
                 <div
                   key={w.id}
-                  onClick={() => { if (isLocked) { setShowUpgrade(true); return } setActiveWorkflow(w.id); setGeneratedPrompt('') }
+                  onClick={() => { 
+                    if (isLocked) { 
+                      setShowUpgrade(true); 
+                      return; 
+                    } 
+                    setActiveWorkflow(w.id); 
+                    setGeneratedPrompt(''); 
+                  }}
                   className={`border rounded-xl p-4 cursor-pointer transition-all ${
                     isLocked
                       ? 'border-gray-100 bg-gray-50 opacity-60'
@@ -521,7 +522,6 @@ export default function PMToolkit() {
               </div>
             ) : activeW ? (
               <div className="border border-gray-100 rounded-xl overflow-hidden">
-
                 <div className="px-5 py-4 border-b border-gray-100">
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`text-xs px-2 py-0.5 rounded-full ${activeW.phaseColor}`}>{activeW.phase}</span>
@@ -597,44 +597,21 @@ export default function PMToolkit() {
                       </pre>
                     </div>
 
-                    {/* AI Tools Section */}
                     <div className="border-t border-gray-100 pt-4">
                       <p className="text-xs text-gray-500 mb-2">Open in your AI tool:</p>
                       <div className="flex flex-wrap gap-2">
-{mainAITools.map(tool => (
-  <a
-    key={tool.name}
-    href={tool.url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors"
-  >
-    {tool.emoji} {tool.name}
-  </a>
-))}
+                        {mainAITools.map(tool => (
+                          <a
+                            key={tool.name}
+                            href={tool.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded-lg ${tool.bg} hover:opacity-80 transition-opacity`}
+                          >
+                            {tool.emoji} {tool.name}
+                          </a>
+                        ))}
 
-{showUpgrade && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-    <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
-      <div className="text-3xl mb-4">🔒</div>
-      <h2 className="text-xl font-medium text-gray-900 mb-2">Unlock all 10 workflows</h2>
-      <p className="text-sm text-gray-500 mb-6">
-        The first 3 workflows are free. Unlock all 10 with a one-time purchase.
-      </p>
-      <div className="flex flex-col gap-3">
-        <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/3de8096f-6512-4c82-a72d-06f396c8bb37" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors">
-          Unlock PM Toolkit — $79
-        </a>
-        <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
-          Get all 12 toolkits — $299
-        </a>
-        <button onClick={() => setShowUpgrade(false)} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
-          Maybe later
-        </button>
-      </div>
-    </div>
-  </div>
-)}
                         <div className="relative">
                           <button
                             onClick={() => setShowMoreAI(!showMoreAI)}
@@ -662,16 +639,36 @@ export default function PMToolkit() {
                       </div>
                       <p className="text-xs text-gray-400 mt-2">Copy your prompt first, then open the AI tool and paste.</p>
                     </div>
-
                   </div>
                 )}
-
               </div>
             ) : null}
           </div>
-
         </div>
       </div>
+
+      {showUpgrade && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
+            <div className="text-3xl mb-4">🔒</div>
+            <h2 className="text-xl font-medium text-gray-900 mb-2">Unlock all 10 workflows</h2>
+            <p className="text-sm text-gray-500 mb-6">
+              The first 3 workflows are free. Unlock all 10 with a one-time purchase.
+            </p>
+            <div className="flex flex-col gap-3">
+              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/3de8096f-6512-4c82-a72d-06f396c8bb37" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors">
+                Unlock PM Toolkit — $79
+              </a>
+              <a href="https://taskflowai.lemonsqueezy.com/checkout/buy/8b2db765-2683-40c9-834c-ee53c8be8504" target="_blank" rel="noopener noreferrer" className="w-full py-3 border border-gray-200 text-gray-700 text-sm rounded-xl hover:bg-gray-50 transition-colors">
+                Get all 12 toolkits — $299
+              </a>
+              <button onClick={() => setShowUpgrade(false)} className="text-xs text-gray-400 hover:text-gray-600 mt-1">
+                Maybe later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
